@@ -1,0 +1,1209 @@
+/* ==========================================================================
+   TIEMPO DE VIDA - PÁGINA DE INICIO (NUEVA HOME DESDE CERO)
+   Estilo: Minimalista, Cinematográfico, Silencioso (A24, Apple, Leica, Patagonia)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. RESET & ESTILOS BASE
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Permite scroll vertical pero oculta el horizontal */
+    scroll-behavior: smooth; /* Desplazamiento suave en anclas */
+    background-color: #050b0d; /* Fondo carbón oscuro profundo */
+    color: #ffffff;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   2. HERO SECTION (100vh - Cinematográfico)
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #050b0d; /* Se integra con los bordes oscuros de la imagen */
+    /* Nueva imagen limpia sin textos en formato gran angular */
+    background-image: url('assets/images/clean_wide_stage.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; /* En escritorio se muestra completa sin zoom para conservar la composición original */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinea los textos al fondo (piso de madera) para no tapar al protagonista */
+    overflow: hidden;
+}
+
+/* Overlay negro sutil de 18% para optimizar la lectura */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 11, 13, 0.18);
+    z-index: 1;
+}
+
+/* Contenedor del contenido en el tercio inferior */
+.hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 950px;
+    padding: 0 40px;
+    padding-bottom: 5vh; /* Respiro inferior controlado para mantener el texto bajo del protagonista */
+    display: flex;
+    justify-content: center;
+}
+
+/* Bloque de Textos animado */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    animation: cinematicFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Frase Principal: "Nadie llega hasta acá..." - Reducida y acotada para no tapar el torso */
+.hero-main-title {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(22px, 2.8vw, 42px); /* Más compacta y elegante */
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    color: #ffffff;
+    max-width: 580px; /* Ancho acotado para dejar libre el área visual del protagonista */
+    margin: 0 auto;
+}
+
+/* Segunda Frase con separación elegante pero compacta */
+.hero-sub-title {
+    font-size: clamp(14px, 1.6vw, 20px); /* Tamaño más fino y sutil */
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65); /* Blanco con leve transparencia */
+    margin-top: clamp(35px, 5vh, 50px); /* Separación generosa pero que no desplaza el texto hacia arriba */
+    letter-spacing: 0.5px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Frase Final: "Despertar es la causa" (Dorado Cálido en Cursiva) */
+.hero-highlight {
+    font-size: clamp(18px, 2vw, 28px); /* Proporcionalmente más pequeño y silencioso */
+    font-weight: 300;
+    font-style: italic; /* Cursiva */
+    color: #D6B07A; /* Dorado cálido */
+    margin-top: clamp(35px, 5vh, 50px); /* Separación generosa pero controlada */
+    letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(214, 176, 122, 0.1);
+}
+
+/* Botón Minimalista Único */
+.btn-hero-minimalist {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 44px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-top: clamp(30px, 4.5vh, 45px);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+/* Micro-interacciones del botón */
+.btn-hero-minimalist:hover {
+    background-color: #ffffff;
+    color: #050b0d;
+    border-color: #ffffff;
+    letter-spacing: 5px; /* Expansión sutil de espaciado */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+/* --------------------------------------------------------------------------
+   3. ANIMACIONES CINEMÁTICAS
+   -------------------------------------------------------------------------- */
+@keyframes cinematicFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   4. DISEÑO RESPONSIVE Y ADAPTACIÓN
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .hero-section {
+        background-size: cover; /* En móvil llena la pantalla verticalmente */
+        background-position: center 15%; /* Centra al protagonista */
+    }
+
+    .hero-container {
+        padding: 0 24px;
+        padding-bottom: 5vh;
+    }
+    
+    .hero-sub-title {
+        margin-top: 35px;
+        line-height: 1.5;
+    }
+    
+    .hero-highlight {
+        margin-top: 35px;
+    }
+    
+    .btn-hero-minimalist {
+        padding: 12px 34px;
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-top: 30px;
+    }
+    
+    .btn-hero-minimalist:hover {
+        letter-spacing: 3.5px;
+    }
+}
+
+/* Ajustes especiales para dispositivos pequeños con pantalla vertical muy reducida */
+@media (max-height: 650px) {
+    .hero-container {
+        padding-bottom: 3vh;
+    }
+    .hero-sub-title {
+        margin-top: 24px;
+    }
+    .hero-highlight {
+        margin-top: 24px;
+    }
+    .btn-hero-minimalist {
+        margin-top: 24px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. SECTION 2: AUTOPILOT STATION (Piloto Automático)
+   -------------------------------------------------------------------------- */
+.autopilot-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #050b0d;
+    background-image: url('assets/images/autopilot_station.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; /* Ocupa todo el ancho y alto de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centrado vertical y horizontal */
+    overflow: hidden;
+}
+
+/* Overlay más denso para garantizar legibilidad del texto sobre el fondo detallado */
+.autopilot-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(5, 11, 13, 0.4) 0%, rgba(5, 11, 13, 0.6) 100%);
+    z-index: 1;
+}
+
+.autopilot-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 950px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.autopilot-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    animation: cinematicFadeIn 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Título: "¿Y si el problema no fuera..." */
+.autopilot-title {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    color: #ffffff;
+    margin-bottom: clamp(24px, 3.5vh, 40px);
+}
+
+/* Lista de preguntas */
+.autopilot-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1.2vh, 16px); /* Espaciado responsivo vertical */
+    margin-bottom: clamp(35px, 5vh, 55px);
+}
+
+.autopilot-item {
+    font-size: clamp(14px, 1.6vw, 20px);
+    font-weight: 300;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.65); /* Blanco translúcido */
+    letter-spacing: 0.5px;
+}
+
+/* Cierre Destacado: "¿Y si el verdadero problema fuera vivir en piloto automático?" */
+.autopilot-highlight {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(24px, 3.5vw, 44px);
+    font-weight: 300;
+    color: #D6B07A; /* Dorado cálido */
+    letter-spacing: 1px;
+    line-height: 1.3;
+    margin-bottom: clamp(16px, 2vh, 24px);
+    text-shadow: 0 2px 10px rgba(214, 176, 122, 0.1);
+    max-width: 800px;
+}
+
+/* Subtítulo: "La conciencia siempre llega antes que el cambio." */
+.autopilot-sub-highlight {
+    font-size: clamp(14px, 1.6vw, 18px);
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0; /* Último elemento, sin margen inferior */
+}
+
+
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE DESIGN ADAPTATION FOR SECTION 2
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .autopilot-container {
+        padding: 0 24px;
+    }
+    
+    .autopilot-list {
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   7. SECTION 3: BEACH AUTONOMY (Definición de Salud)
+   -------------------------------------------------------------------------- */
+.autonomy-section {
+    width: 100%;
+    height: 90vh; /* Altura total de una sola pantalla acotada */
+    background-color: #050b0d; /* Fondo carbón oscuro profundo */
+    overflow: hidden;
+}
+
+.autonomy-split-container {
+    display: grid;
+    grid-template-columns: 40% 60%; /* 40% izquierda (marfil) / 60% derecha (negro) permanente */
+    width: 100%;
+    height: 100%;
+}
+
+/* Lado Izquierdo: Fondo Marfil Claro y Foto Editorial */
+.autonomy-image-side {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-color: #F8F6F2; /* Marfil muy claro cálido, igual que el bloque 4 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow: hidden;
+}
+
+.autonomy-editorial-photo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.autonomy-img-editorial {
+    width: 65%; /* La fotografía ocupa el 65% del ancho de su columna */
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    /* Sombra muy suave y difusa debajo de la fotografía para darle profundidad editorial */
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.07), 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Lado Derecho: Texto */
+.autonomy-text-side {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-color: #050b0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(40px, 6vh, 80px);
+    overflow: hidden; /* Elimina cualquier scroll interno */
+}
+
+.autonomy-text-wrapper {
+    max-width: 580px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* Título: "La salud para mí." */
+.autonomy-title {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(18px, 2.1vw, 30px); /* Reducido un 10% */
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    line-height: 1.2; /* Reducido un 10% */
+    color: #ffffff;
+    margin-bottom: clamp(15px, 2.5vh, 22px); /* Reducido un 15% */
+}
+
+/* Párrafos Iniciales */
+.autonomy-intro-text {
+    font-size: clamp(12px, 1.3vw, 14px); /* Reducido un 8% */
+    font-weight: 300;
+    line-height: 1.45; /* Reducido un 10% */
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: clamp(15px, 2.5vh, 22px); /* Reducido un 15% */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Frases Destacadas en Dorado */
+.autonomy-gold-statements {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(14px, 1.5vw, 17px); /* Reducido un 8% */
+    font-weight: 300;
+    line-height: 1.35; /* Reducido un 10% */
+    color: #D6B07A; /* Dorado cálido */
+    margin-bottom: clamp(15px, 2.5vh, 22px); /* Reducido un 15% */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Frase de Energía */
+.autonomy-energy-text {
+    font-size: clamp(12px, 1.3vw, 14px); /* Reducido un 8% */
+    font-weight: 300;
+    line-height: 1.45; /* Reducido un 10% */
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: clamp(18px, 3vh, 27px); /* Reducido un 15% */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Grid de dos columnas */
+.autonomy-columns-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(20px, 3vw, 40px);
+    width: 100%;
+    margin-bottom: clamp(18px, 3vh, 27px); /* Reducido un 15% */
+}
+
+.autonomy-column {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1vh, 10px); /* Reducido un 15% */
+}
+
+.autonomy-column p {
+    font-size: clamp(12px, 1.3vw, 14px); /* Reducido un 8% */
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Conclusión: "Porque la verdadera salud..." */
+.autonomy-conclusion-text {
+    font-size: clamp(12px, 1.3vw, 14px); /* Reducido un 8% */
+    font-weight: 300;
+    line-height: 1.35; /* Reducido un 10% */
+    color: #ffffff;
+    margin-bottom: clamp(20px, 3.4vh, 32px); /* Reducido un 15% */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.autonomy-conclusion-text .gold-highlight {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(15px, 1.6vw, 20px); /* Reducido un 8% */
+    font-weight: 300;
+    color: #D6B07A;
+}
+
+/* Línea divisoria */
+.autonomy-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: clamp(15px, 2.5vh, 24px); /* Reducido un 15% */
+    margin-bottom: clamp(12px, 2vh, 18px); /* Reducido un 15% */
+}
+
+/* Frase Final: "La verdadera libertad..." */
+.autonomy-footer-statement {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(14px, 1.6vw, 18px); /* Reducido un 8% */
+    font-weight: 300;
+    color: #D6B07A;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE DESIGN ADAPTATION FOR SECTION 3
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .autonomy-section {
+        height: auto; /* Permite que fluya en vertical en móviles */
+        overflow: visible;
+    }
+    
+    .autonomy-split-container {
+        grid-template-columns: 1fr; /* Columna única en móviles */
+    }
+    
+    .autonomy-image-side {
+        height: 50vh; /* Altura acotada de la foto en móviles */
+        padding: 24px;
+    }
+    
+    .autonomy-img-editorial {
+        width: 70%;
+    }
+    
+    .autonomy-text-side {
+        height: auto;
+        padding: 40px 24px;
+        overflow-y: visible;
+    }
+    
+    .autonomy-columns-grid {
+        grid-template-columns: 1fr; /* Las columnas de texto se apilan en móviles */
+        gap: 16px;
+    }
+    
+    .autonomy-column {
+        gap: 10px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   9. SECTION 4: DOSES AND CONSCIOUSNESS (Dosis y Conciencia)
+   -------------------------------------------------------------------------- */
+.doses-section {
+    width: 100%;
+    height: 90vh; /* Altura total de una sola pantalla establecida a 90vh */
+    background-color: #050b0d; /* Fondo carbón oscuro profundo */
+    overflow: hidden;
+}
+
+.doses-split-container {
+    display: grid;
+    grid-template-columns: 45% 55%; /* 45% izquierda (marfil) / 55% derecha (negro) permanente */
+    width: 100%;
+    height: 100%;
+}
+
+/* Lado Izquierdo: Fondo Marfil Claro y Foto Editorial */
+.doses-image-side {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-color: #F8F6F2; /* Marfil muy claro cálido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow: hidden;
+}
+
+.doses-editorial-photo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.doses-img-editorial {
+    width: 73%; /* Ocupa entre el 70% y el 75% del ancho de su columna, manteniendo aire */
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    /* Sombra muy suave y difusa debajo de la fotografía para darle sensación de profundidad */
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.07), 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Lado Derecho: Texto */
+.doses-text-side {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-color: #050b0d; /* Fondo negro */
+    display: flex;
+    justify-content: flex-start; /* Alinea el wrapper a la izquierda de la columna negra */
+    align-items: center;
+    padding: clamp(40px, 6vh, 80px);
+    overflow: hidden; /* Elimina cualquier scroll interno */
+}
+
+.doses-text-wrapper {
+    max-width: 480px; /* Reducimos el ancho útil para facilitar la lectura */
+    width: 100%;
+    margin-left: clamp(40px, 7vw, 100px); /* Margen izquierdo amplio (aproximadamente 80-100px) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* Nivel 1: Título muy grande */
+.doses-level1 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(21px, 2.8vw, 38px); /* Reducido un 10% */
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    line-height: 1.15; /* Reducido un 10% */
+    color: #ffffff;
+    margin-bottom: clamp(7px, 1.2vh, 10px); /* Reducido un 15% */
+}
+
+/* Nivel 6: Frase principal del bloque (dorada y la más grande, frase dominante) */
+.doses-level6 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(18px, 2.2vw, 29px); /* Reducido un 10% */
+    font-weight: 300;
+    color: #D6B07A; /* Dorado cálido */
+    line-height: 1.2; /* Reducido un 10% */
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+/* Nivel 2: Subtítulo (grande y destacado en dorado) */
+.doses-level2 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px); /* Reducido un 10% */
+    font-weight: 300;
+    color: #D6B07A;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+/* Nivel 3: Texto normal */
+.doses-level3 {
+    font-size: clamp(12px, 1.3vw, 14px); /* Reducido un 8% */
+    font-weight: 300;
+    line-height: 1.35; /* Reducido un 10% */
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0;
+}
+
+/* Nivel 4: Lista con mucho espacio entre líneas */
+.doses-level4 {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(5px, 0.8vh, 8px); /* Reducido un 15% */
+    font-size: clamp(11px, 1.15vw, 13px); /* Reducido un 8% */
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.75);
+    width: 100%;
+}
+
+.doses-level4 p {
+    margin: 0;
+}
+
+/* Nivel 5: Preguntas (más grandes y destacadas) y respuestas */
+.doses-level5 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Reducido un 15% */
+    font-size: clamp(13px, 1.3vw, 15px); /* Reducido un 8% */
+    font-weight: 300;
+}
+
+.doses-qa-row {
+    display: flex;
+    gap: 12px;
+}
+
+.doses-q {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.doses-a {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+/* Nivel 7: Reflexiones sobre alimentos */
+.doses-level7 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Reducido un 15% */
+    font-size: clamp(11px, 1.15vw, 13px); /* Reducido un 8% */
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.doses-level7 p {
+    margin: 0;
+}
+
+.doses-level7 .gold-highlight {
+    color: #D6B07A; /* Última frase en dorado */
+}
+
+/* Separadores elegantes: "—" */
+.doses-separator {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.12);
+    margin-top: clamp(3px, 0.6vh, 7px); /* Reducido un 15% */
+    margin-bottom: clamp(3px, 0.6vh, 7px); /* Reducido un 15% */
+    text-align: left;
+    font-weight: 300;
+}
+
+/* Nivel 8: Cierre muy separado */
+.doses-level8 {
+    width: 100%;
+    margin-top: clamp(14px, 2.5vh, 22px); /* Reducido un 15% */
+}
+
+.doses-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0;
+    margin-bottom: clamp(7px, 1vh, 10px); /* Reducido un 15% */
+}
+
+.doses-closing-statement {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(15px, 1.8vw, 22px); /* Reducido un 8% */
+    font-weight: 300;
+    color: #D6B07A; /* Color dorado */
+    letter-spacing: 0.5px;
+    line-height: 1.25; /* Reducido un 10% */
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. RESPONSIVE DESIGN ADAPTATION FOR SECTION 4 (Permanent Split screen)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .doses-section {
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    .doses-split-container {
+        grid-template-columns: 45% 55%; /* Mantiene 45/55 permanente en móviles */
+    }
+    
+    .doses-image-side {
+        padding: 16px;
+    }
+    
+    .doses-img-editorial {
+        width: 80%; /* Más visible en pantallas pequeñas */
+    }
+    
+    .doses-text-side {
+        padding: 24px 12px;
+    }
+    
+    .doses-text-wrapper {
+        margin-left: 16px; /* Ajustado en pantallas pequeñas */
+        max-width: 90%;
+    }
+    
+    .doses-level1 {
+        margin-bottom: 8px;
+    }
+    
+    .doses-separator {
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+    
+    .doses-level8 {
+        margin-top: 16px;
+    }
+    
+    .doses-divider {
+        margin-bottom: 10px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   11. SECTION 5: WHY EXISTS (¿Por qué existe Tiempo de Vida?)
+   -------------------------------------------------------------------------- */
+.why-section {
+    width: 100%;
+    height: 90vh; /* Altura de una sola pantalla reducida a 90vh */
+    background-color: #050b0d; /* Fondo carbón oscuro profundo */
+    overflow: hidden;
+}
+
+.why-split-container {
+    display: grid;
+    grid-template-columns: 45% 55%; /* 45% izquierda (marfil) / 55% derecha (negro) permanente */
+    width: 100%;
+    height: 100%;
+}
+
+/* Lado Izquierdo: Fondo Marfil Claro y Foto Editorial */
+.why-image-side {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-color: #F8F6F2; /* Marfil muy claro cálido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    overflow: hidden;
+}
+
+.why-editorial-photo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.why-img-editorial {
+    width: 73%; /* Ocupa el 73% del ancho de su columna, manteniendo aire */
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    /* Sombra muy suave y difusa debajo de la fotografía para darle profundidad editorial */
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.07), 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+/* Lado Derecho: Texto */
+.why-text-side {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background-color: #050b0d; /* Fondo negro */
+    display: flex;
+    justify-content: flex-start; /* Alinea el wrapper a la izquierda de la columna negra */
+    align-items: center;
+    padding: clamp(40px, 6vh, 80px);
+    overflow: hidden; /* Elimina cualquier scroll interno */
+}
+
+.why-text-wrapper {
+    max-width: 480px; /* Reducimos el ancho útil para facilitar la lectura */
+    width: 100%;
+    margin-left: clamp(40px, 7vw, 100px); /* Margen izquierdo amplio (aproximadamente 80-100px) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* Título (Nivel 1) */
+.why-level1 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(21px, 2.8vw, 38px); /* Compacto al 90vh */
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    color: #ffffff;
+    margin-bottom: clamp(7px, 1.2vh, 10px);
+}
+
+/* Cuerpo del texto */
+.why-body-text {
+    font-size: clamp(12px, 1.3vw, 14px);
+    font-weight: 300;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.why-body-text p {
+    margin: 0;
+}
+
+.why-body-text .why-p-highlight {
+    color: #ffffff;
+}
+
+.why-body-text .why-p-pause {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.why-body-text .why-p-gold {
+    color: #D6B07A;
+    font-weight: 400;
+}
+
+/* Conclusión */
+.why-conclusion-text {
+    font-size: clamp(12px, 1.3vw, 14px);
+    font-weight: 300;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.why-conclusion-text p {
+    margin: 0;
+}
+
+.why-conclusion-text .why-p-bold {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(15px, 1.6vw, 20px);
+    color: #D6B07A;
+    font-weight: 400;
+}
+
+/* Separadores guion: "—" */
+.why-separator {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.12);
+    margin-top: clamp(3px, 0.6vh, 7px);
+    margin-bottom: clamp(3px, 0.6vh, 7px);
+    text-align: left;
+    font-weight: 300;
+}
+
+/* Cierre (Nivel 5) */
+.why-level5 {
+    width: 100%;
+    margin-top: clamp(14px, 2.5vh, 22px);
+}
+
+.why-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0;
+    margin-bottom: clamp(7px, 1vh, 10px);
+}
+
+.why-pre-closing {
+    font-size: clamp(11px, 1.15vw, 13px);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 6px 0;
+}
+
+.why-closing-statement {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(16px, 2.2vw, 28px); /* Tamaño mayor */
+    font-weight: 300;
+    color: #D6B07A; /* Dorado cálido */
+    letter-spacing: 0.5px;
+    line-height: 1.25;
+    margin: 0;
+}
+
+/* Adaptación responsive para Sección 5 (Permanent Split screen) */
+@media (max-width: 768px) {
+    .why-section {
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    .why-split-container {
+        grid-template-columns: 45% 55%; /* Mantiene 45/55 permanente en móviles */
+    }
+    
+    .why-image-side {
+        padding: 16px;
+    }
+    
+    .why-img-editorial {
+        width: 80%; /* Más visible en pantallas pequeñas */
+    }
+    
+    .why-text-side {
+        padding: 24px 12px;
+    }
+    
+    .why-text-wrapper {
+        margin-left: 16px; /* Ajustado en pantallas pequeñas */
+        max-width: 90%;
+    }
+    
+    .why-level1 {
+        margin-bottom: 8px;
+    }
+    
+    .why-separator {
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+    
+    .why-level5 {
+        margin-top: 16px;
+    }
+    
+    .why-divider {
+        margin-bottom: 10px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   12. SECTION 6: CLOSING (Último Bloque)
+   -------------------------------------------------------------------------- */
+.closing-section {
+    width: 100%;
+    height: 90vh; /* Altura de una sola pantalla de 90vh */
+    background-color: #0b0b0b; /* Fondo negro profundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(30px, 5vh, 60px) 24px;
+    overflow: hidden; /* Elimina scroll interno */
+}
+
+.closing-container {
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Título */
+.closing-title {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(20px, 2.5vw, 34px);
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+    margin-bottom: clamp(14px, 2.5vh, 22px);
+}
+
+/* Cuerpo Narrativo */
+.closing-body-text {
+    font-size: clamp(12px, 1.3vw, 14px);
+    font-weight: 300;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.65);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1vh, 10px);
+    margin-bottom: clamp(16px, 3vh, 26px);
+}
+
+.closing-body-text p {
+    margin: 0;
+}
+
+.closing-body-text .closing-pause {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.closing-body-text .closing-highlight {
+    color: #D6B07A; /* Dorado cálido */
+    font-weight: 400;
+}
+
+/* Líneas Divisorias Finas */
+.closing-divider {
+    width: 150px;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 0;
+    margin-bottom: clamp(16px, 3vh, 26px);
+}
+
+/* Hablemos Cabecera */
+.closing-contact-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: clamp(16px, 3vh, 26px);
+}
+
+.closing-contact-header h3 {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+}
+
+.closing-contact-header p {
+    font-size: clamp(12px, 1.3vw, 14px);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+}
+
+.closing-contact-header .gold-highlight {
+    color: #D6B07A;
+}
+
+/* Canales de Contacto Editoriales */
+.closing-contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 24px);
+    font-size: clamp(12px, 1.3vw, 14px);
+    margin-bottom: clamp(16px, 3vh, 26px);
+}
+
+.closing-contact-links .contact-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    transition: opacity 0.3s ease;
+}
+
+.closing-contact-links .contact-link:hover {
+    opacity: 0.8;
+}
+
+.closing-contact-links .contact-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.closing-contact-links .contact-value {
+    color: #ffffff;
+    font-weight: 300;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-bottom: 2px;
+}
+
+.closing-contact-links .pending-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.closing-contact-links .pending-email .contact-value {
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    cursor: default;
+}
+
+.closing-contact-links .contact-separator {
+    color: rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Final */
+.closing-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.closing-footer .footer-brand {
+    font-family: 'Montserrat', 'Inter', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0;
+}
+
+.closing-footer .footer-slogan {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+}
+
+/* Adaptación responsive para el Cierre */
+@media (max-width: 600px) {
+    .closing-section {
+        height: auto;
+        padding: 40px 16px;
+        overflow-y: visible;
+    }
+    
+    .closing-container {
+        padding: 0;
+    }
+    
+    .closing-contact-links {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .closing-contact-links .contact-separator {
+        display: none;
+    }
+}

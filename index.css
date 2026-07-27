@@ -1,0 +1,1464 @@
+/* ==========================================================================
+   TIEMPO DE VIDA - BRANDING DE LUJO & DISEÑO EDITORIAL (VANILLA CSS)
+   Inspirado en Aman Resorts, Rolex, Apple y Porsche
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES & RESET
+   -------------------------------------------------------------------------- */
+:root {
+    /* Paleta Cromática Ultra Premium */
+    --color-black-deep: #050b0d;   /* Negro profundo con matiz carbón */
+    --color-petroleum: #0b222d;    /* Azul Petróleo de lujo */
+    --color-petroleum-light: #163645;
+    --color-white: #ffffff;
+    --color-cream: #faf9f6;        /* Crema Alabastro (Aman Resorts) */
+    --color-grey-light: #f5f5f7;   /* Gris neutro estilo Apple */
+    --color-grey-text: #515154;
+    --color-grey-border: rgba(0, 0, 0, 0.05);
+    
+    /* Acentos Dorados Refinados */
+    --color-gold: #c5a880;         /* Oro satinado */
+    --color-gold-light: #ebd9c0;
+    --color-gold-dark: #a18660;
+    --color-gold-glow: rgba(197, 168, 128, 0.15);
+
+    /* Tipografía */
+    --font-titles: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+
+    /* Estructura & Animaciones */
+    --container-max-width: 1280px;
+    --header-height: 90px;
+    --border-radius-lg: 16px;
+    --border-radius-md: 8px;
+    --transition-cinematic: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--color-white);
+    color: var(--color-black-deep);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--color-white);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. ELEMENTOS GENERALES DE DISEÑO & CONTENEDORES
+   -------------------------------------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* Títulos y Secciones Editoriales */
+.section-tag {
+    font-family: var(--font-titles);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--color-gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-family: var(--font-titles);
+    font-size: 48px;
+    font-weight: 200;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+    color: var(--color-petroleum);
+    margin-bottom: 32px;
+}
+
+.section-subtitle {
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--color-grey-text);
+    max-width: 720px;
+    margin-bottom: 56px;
+    font-weight: 300;
+}
+
+.section-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+}
+
+.text-gold {
+    color: var(--color-gold) !important;
+}
+
+/* Botones Premium (Estilo Rolex/Porsche) */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-titles);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 18px 40px;
+    border-radius: 0; /* Bordes rectos para un look más formal, elegante e internacional */
+    transition: var(--transition-fast);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-petroleum);
+    color: var(--color-white);
+    border-color: var(--color-petroleum);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-gold-dark);
+    border-color: var(--color-gold-dark);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-petroleum);
+    border-color: var(--color-petroleum);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-petroleum);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-white);
+    color: var(--color-black-deep);
+    border-color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 12px 24px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.btn-lg {
+    padding: 22px 54px;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   3. SITE HEADER (Navegación Esmerilada Rolex-like)
+   -------------------------------------------------------------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-grey-border);
+    transition: var(--transition-fast);
+}
+
+.site-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    height: 75px;
+}
+
+.header-container {
+    max-width: var(--container-max-width);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 38px;
+    width: auto;
+    transition: var(--transition-fast);
+}
+
+.site-header.scrolled .logo-img {
+    height: 32px;
+}
+
+.logo-text {
+    font-family: var(--font-titles);
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--color-black-deep);
+    text-transform: uppercase;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-link {
+    font-family: var(--font-titles);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-black-deep);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 6px 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav-link:hover {
+    color: var(--color-gold-dark);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.header-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle .bar {
+    width: 100%;
+    height: 1.5px;
+    background-color: var(--color-black-deep);
+    transition: var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   4. HERO SECTION (Mucho espacio en blanco y tipografía monumental)
+   -------------------------------------------------------------------------- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    background: url('assets/images/stage_hero_final.jpg') no-repeat center top/cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 90px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(5, 11, 13, 0.4) 0%, rgba(5, 11, 13, 0.85) 100%);
+    z-index: 1;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-only-name {
+    font-family: var(--font-titles);
+    font-size: clamp(32px, 6vw, 68px);
+    font-weight: 200;
+    letter-spacing: clamp(6px, 1.2vw, 16px);
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin-bottom: 24px;
+    animation: fadeInName 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    white-space: nowrap;
+}
+
+.hero-only-tagline {
+    font-family: var(--font-body);
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-grey-light);
+    margin-bottom: 36px;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+}
+
+.hero-only-action {
+    display: flex;
+    justify-content: center;
+}
+
+/* Animación del nombre del Hero */
+@keyframes fadeInName {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. SECTION 2: EL MANIFIESTO (Estilo Editorial Alabastro)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   5. SECTION 2: EL MANIFIESTO (Lento y Poético)
+   -------------------------------------------------------------------------- */
+.section-manifesto {
+    padding: 160px 0;
+    background-color: var(--color-black-deep);
+    color: var(--color-white);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.manifesto-container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.manifesto-verses {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.manifesto-verse {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    line-height: 1.6;
+    color: var(--color-grey-light);
+    font-style: italic;
+    opacity: 0.85;
+    font-weight: 300;
+}
+
+.manifesto-verse-highlight {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    line-height: 1.6;
+    color: var(--color-gold);
+    font-style: italic;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+/* --------------------------------------------------------------------------
+   5.5 SECTION 2.5: QUIÉN SOY (Historia Narrativa Humana)
+   -------------------------------------------------------------------------- */
+.section-who-am-i {
+    padding: 140px 0;
+    background-color: var(--color-cream);
+    border-bottom: 1px solid var(--color-grey-border);
+}
+
+.grid-who-am-i {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 80px;
+}
+
+.who-am-i-left {
+    max-width: 480px;
+}
+
+.who-am-i-lead {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    line-height: 1.4;
+    color: var(--color-gold-dark);
+    font-style: italic;
+    margin-top: 24px;
+}
+
+.who-am-i-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.who-am-i-text {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--color-grey-text);
+    font-weight: 300;
+}
+
+.who-am-i-credentials {
+    margin-top: 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 28px;
+}
+
+.credentials-name {
+    font-family: var(--font-titles);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-petroleum);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.credentials-titles {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    color: var(--color-gold-dark);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION 3: LOS PILARES (Cards Modernas Editoriales)
+   -------------------------------------------------------------------------- */
+.section-pillars {
+    padding: 140px 0;
+    background-color: var(--color-white);
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas para los 5 pilares */
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.pillar-editorial-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-border);
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-cinematic);
+    min-height: 480px;
+    position: relative;
+}
+
+.pillar-editorial-card:hover {
+    border-color: var(--color-gold);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(197, 168, 128, 0.08);
+}
+
+.pillar-num {
+    font-family: var(--font-titles);
+    font-size: 36px;
+    font-weight: 200;
+    color: var(--color-gold);
+    margin-bottom: 32px;
+    display: block;
+}
+
+.pillar-editorial-card h3 {
+    font-family: var(--font-titles);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--color-petroleum);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.pillar-editorial-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-grey-text);
+    margin-bottom: auto; /* Empuja la cita hacia el fondo */
+    font-weight: 300;
+}
+
+.pillar-editorial-card .pillar-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--color-gold-dark);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 16px;
+    margin-top: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   6.5 SECTION 3.5: ¿QUÉ ES LA SALUD PARA MÍ? (Manifiesto de Salud)
+   -------------------------------------------------------------------------- */
+.section-what-is-health {
+    padding: 140px 0;
+    background-color: var(--color-white);
+}
+
+.health-left {
+    max-width: 540px;
+}
+
+.health-lead {
+    font-family: var(--font-titles);
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+}
+
+.health-text {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--color-grey-text);
+    margin-bottom: 24px;
+    font-weight: 300;
+}
+
+.health-text.emphasis-text {
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--color-petroleum);
+    border-left: 2px solid var(--color-gold);
+    padding-left: 24px;
+    margin-top: 36px;
+}
+
+.health-right {
+    width: 100%;
+}
+
+.health-image-container {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+.health-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition-cinematic);
+}
+
+.health-image-container:hover .health-image {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .section-what-is-health {
+        padding: 80px 0;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   7. SECTION 4: MEDICINA BASADA EN EVIDENCIA (Soporte Científico)
+   -------------------------------------------------------------------------- */
+.section-science {
+    padding: 140px 0;
+    background-color: var(--color-cream);
+    border-top: 1px solid var(--color-grey-border);
+    border-bottom: 1px solid var(--color-grey-border);
+}
+
+.science-left {
+    max-width: 520px;
+}
+
+.science-image-wrapper {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.science-emotional-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition-cinematic);
+}
+
+.science-image-wrapper:hover .science-emotional-image {
+    transform: scale(1.02);
+}
+
+.science-desc {
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--color-grey-text);
+    margin-bottom: 24px;
+    font-weight: 300;
+}
+
+.science-manifesto-text {
+    margin-top: 32px;
+}
+
+.science-desc.highlight-desc {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--color-gold-dark);
+    margin-bottom: 20px;
+}
+
+.science-desc.emphasis-desc {
+    font-family: var(--font-titles);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    color: var(--color-petroleum);
+    border-left: 2px solid var(--color-gold);
+    padding-left: 20px;
+    margin-top: 32px;
+    text-transform: uppercase;
+}
+
+.pillars-recovery-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.recovery-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-border);
+    padding: 32px;
+    transition: var(--transition-fast);
+    cursor: pointer;
+}
+
+.recovery-card:hover {
+    border-color: rgba(197, 168, 128, 0.4);
+    box-shadow: 0 10px 25px rgba(197, 168, 128, 0.05);
+}
+
+.recovery-card.active {
+    border-color: var(--color-gold);
+    background-color: var(--color-white);
+    box-shadow: 0 15px 35px rgba(197, 168, 128, 0.08);
+}
+
+.recovery-card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.recovery-num {
+    font-family: var(--font-titles);
+    font-size: 20px;
+    font-weight: 200;
+    color: var(--color-gold);
+}
+
+.recovery-card-header h3 {
+    font-family: var(--font-titles);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-petroleum);
+    margin: 0;
+    transition: var(--transition-fast);
+}
+
+.recovery-card.active .recovery-card-header h3 {
+    color: var(--color-gold-dark);
+    font-weight: 500;
+}
+
+.recovery-card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    opacity: 0;
+}
+
+.recovery-card.active .recovery-card-content {
+    max-height: 120px;
+    margin-top: 16px;
+    opacity: 1;
+}
+
+.recovery-card-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-grey-text);
+    font-weight: 300;
+}
+
+/* --------------------------------------------------------------------------
+   8. SECTION 5: PILARES FILOSÓFICOS
+   -------------------------------------------------------------------------- */
+.section-philosophy {
+    padding: 140px 0;
+    background-color: var(--color-white);
+}
+
+.philosophy-block {
+    margin-top: 80px;
+    margin-bottom: 120px;
+}
+
+.philosophy-block:last-child {
+    margin-bottom: 0;
+}
+
+.philosophy-image-container {
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.philosophy-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition-cinematic);
+}
+
+.philosophy-image-container:hover .philosophy-image {
+    transform: scale(1.03);
+}
+
+.philosophy-content {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-grey-border);
+    padding: 48px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+    transition: var(--transition-fast);
+}
+
+.philosophy-content:hover {
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.06);
+    border-color: rgba(197, 168, 128, 0.2);
+}
+
+.philosophy-title {
+    font-family: var(--font-titles);
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--color-petroleum);
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+.philosophy-text {
+    font-family: var(--font-body);
+    font-size: 18.5px;
+    line-height: 1.9;
+    color: var(--color-grey-text);
+    font-weight: 300;
+}
+
+.philosophy-block-full {
+    margin-bottom: 120px;
+    text-align: center;
+    width: 100%;
+}
+
+.philosophy-title-centered {
+    font-family: var(--font-titles);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--color-petroleum);
+    margin-bottom: 32px;
+    letter-spacing: -0.5px;
+}
+
+.philosophy-image-container-full {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.philosophy-image-full {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition-cinematic);
+}
+
+.philosophy-image-container-full:hover .philosophy-image-full {
+    transform: scale(1.02);
+}
+
+/* Sección Premium Dosis y Conciencia (Reconstrucción desde cero) */
+.dosis-premium-section {
+    background-color: #ffffff;
+    width: 100%;
+}
+
+.dosis-premium-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 40px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 64px;
+    align-items: center;
+}
+
+.dosis-premium-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dosis-premium-title {
+    font-family: var(--font-titles);
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: #222222;
+    margin: 0 0 40px 0;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+
+.dosis-premium-text {
+    font-family: var(--font-body);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #4a4a4a;
+    max-width: 520px;
+    margin: 0;
+    text-align: left;
+}
+
+.dosis-premium-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.dosis-premium-image-wrapper {
+    width: 100%;
+    max-width: 780px;
+    height: 440px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.dosis-premium-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0; /* Bordes rectos */
+    transition: var(--transition-cinematic);
+}
+
+.dosis-premium-image-wrapper:hover .dosis-premium-image {
+    transform: scale(1.01);
+}
+
+@media (min-width: 769px) {
+    .philosophy-reverse .philosophy-content {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    .philosophy-reverse .philosophy-image-container {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .philosophy-block {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-bottom: 80px;
+    }
+    
+    .philosophy-image {
+        height: 320px;
+    }
+    
+    .philosophy-content {
+        padding: 0 10px;
+    }
+    
+    .philosophy-title {
+        font-size: 26px;
+        margin-bottom: 16px;
+    }
+
+    .dosis-premium-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 80px 24px;
+    }
+    
+    .dosis-premium-left {
+        align-items: flex-start;
+    }
+    
+    .dosis-premium-title {
+        font-size: 42px;
+        margin-bottom: 24px;
+    }
+    
+    .dosis-premium-text {
+        font-size: 18px;
+        max-width: 100%;
+    }
+    
+    .dosis-premium-right {
+        justify-content: center;
+    }
+    
+    .dosis-premium-image-wrapper {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   9. SECTION 6: PREGUNTAS & REFLEXIONES (FAQ)
+   -------------------------------------------------------------------------- */
+.section-faq {
+    padding: 140px 0;
+    background-color: var(--color-cream);
+    border-top: 1px solid var(--color-grey-border);
+    border-bottom: 1px solid var(--color-grey-border);
+}
+
+.reflection-list {
+    max-width: 800px;
+    margin: 60px auto 0 auto;
+}
+
+.reflection-item {
+    margin-bottom: 64px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 48px;
+}
+
+.reflection-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.reflection-question {
+    font-family: var(--font-titles);
+    font-size: 23px;
+    font-weight: 400;
+    color: var(--color-petroleum);
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+}
+
+.reflection-answer {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--color-grey-text);
+    font-weight: 300;
+    margin-top: 18px;
+}
+
+/* --------------------------------------------------------------------------
+   10. SECTION 7: CTA FINAL (El Patrimonio Real)
+   -------------------------------------------------------------------------- */
+.section-cta-final {
+    position: relative;
+    padding: 160px 0;
+    background: radial-gradient(circle at 50% 50%, var(--color-petroleum) 0%, var(--color-black-deep) 100%);
+    color: var(--color-white);
+    text-align: center;
+    overflow: hidden;
+}
+
+.cta-final-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(197, 168, 128, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.cta-final-content {
+    max-width: 900px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta-final-title {
+    font-family: var(--font-titles);
+    font-size: 48px;
+    font-weight: 200;
+    line-height: 1.25;
+    letter-spacing: -1.5px;
+    margin-bottom: 32px;
+    background: linear-gradient(180deg, #ffffff 40%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-final-subtitle {
+    font-size: 19px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 56px;
+    font-weight: 300;
+    max-width: 680px;
+}
+
+.section-cta-final .btn-primary {
+    background-color: var(--color-white);
+    color: var(--color-petroleum);
+    border-color: var(--color-white);
+}
+
+.section-cta-final .btn-primary:hover {
+    background-color: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   11. SITE FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+    background-color: var(--color-black-deep);
+    color: #86868b;
+    padding: 120px 0 60px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-grid-emotional {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+}
+
+.footer-brand-emotional {
+    max-width: 540px;
+}
+
+.footer-brand-emotional .logo-text {
+    color: var(--color-white);
+}
+
+.footer-manifesto-emotional {
+    margin-top: 36px;
+}
+
+.manifesto-line {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    font-weight: 300;
+}
+
+.manifesto-line.italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--color-white);
+}
+
+.manifesto-line.text-fade {
+    color: #86868b;
+    margin-top: 20px;
+}
+
+.footer-connect-emotional {
+    padding-left: 40px;
+}
+
+.connect-title {
+    font-family: var(--font-titles);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--color-white);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+.connect-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.connect-links a {
+    font-size: 14.5px;
+    color: #86868b;
+    transition: var(--transition-fast);
+}
+
+.connect-links a:hover {
+    color: var(--color-gold);
+}
+
+.footer-bottom-emotional {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 48px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-bottom-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--color-gold);
+}
+
+.footer-bottom-copyright {
+    font-size: 12px;
+    color: #515154;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .footer-grid-emotional {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        margin-bottom: 48px;
+    }
+    
+    .footer-connect-emotional {
+        padding-left: 0;
+    }
+    
+    .footer-bottom-emotional {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding-top: 32px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   12. ANIMACIONES CINEMÁTICAS AL SCROLL (Scroll Reveal)
+   -------------------------------------------------------------------------- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visible {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+}
+
+/* Banner de Escenario */
+.section-stage-banner {
+    width: 100%;
+    background-color: var(--color-black-deep);
+    overflow: hidden;
+    padding: 100px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stage-image-container {
+    width: 100%;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.stage-banner-image {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+    .section-stage-banner {
+        padding: 50px 0;
+    }
+    .stage-image-container {
+        padding: 0 20px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONSIVE DESIGN (Adaptación de Pantalla Inteligente)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 60px;
+    }
+    
+    .section-title {
+        font-size: 42px;
+    }
+    
+    .pillars-grid {
+        grid-template-columns: repeat(3, 1fr); /* Reducción a 3 columnas */
+    }
+}
+
+@media (max-width: 991px) {
+    .pillars-grid {
+        grid-template-columns: repeat(2, 1fr); /* Reducción a 2 columnas */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 24px;
+    }
+
+    .grid-2, .grid-manifesto {
+        grid-template-columns: 1fr;
+        gap: 56px;
+    }
+    
+    /* Mobile Menu hamburguesa */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .main-nav {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: calc(100vh - var(--header-height));
+        background-color: var(--color-white);
+        padding: 48px;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+        pointer-events: none;
+        z-index: 999;
+    }
+    
+    .main-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 32px;
+        align-items: center;
+    }
+    
+    .nav-link {
+        font-size: 16px;
+    }
+    
+    /* Hero Section */
+    .hero-only-name {
+        font-size: 38px;
+        letter-spacing: 8px;
+    }
+
+    .hero-only-tagline {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    /* Manifesto & Quién Soy */
+    .manifesto-verse {
+        font-size: 22px;
+    }
+
+    .manifesto-verse-highlight {
+        font-size: 26px;
+    }
+
+    .grid-who-am-i {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .who-am-i-lead {
+        font-size: 24px;
+    }
+
+    /* Pillars */
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pillar-editorial-card {
+        min-height: auto;
+    }
+
+    /* Ecosystem */
+    .ecosystem-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Science panel */
+    .science-panel-card {
+        padding: 32px;
+    }
+
+    /* FAQ */
+    .faq-question {
+        font-size: 17px;
+        padding: 22px 0;
+    }
+    
+    /* CTA Final */
+    .cta-final-title {
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+    
+    .cta-final-subtitle {
+        font-size: 16px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}
