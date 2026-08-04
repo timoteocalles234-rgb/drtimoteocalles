@@ -32,8 +32,8 @@ html, body {
     width: 100%;
     height: 100vh;
     background-color: #050b0d; /* Se integra con los bordes oscuros de la imagen */
-    /* Nueva imagen limpia sin textos en formato gran angular */
-    background-image: url('assets/images/clean_wide_stage.jpg');
+    /* Nueva imagen limpia sin textos en formato gran angulo
+    background-image: url('assets/images/hero_timoteo.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain; /* En escritorio se muestra completa sin zoom para conservar la composición original */
