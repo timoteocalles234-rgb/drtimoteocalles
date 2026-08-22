@@ -1474,3 +1474,26 @@ html, body {
     background: #d9b86c !important;
     border-color: #d9b86c !important;
 }
+/* BOTONES ÁREAS PÚBLICAS - CORRECCIÓN DEFINITIVA */
+
+body .hero-section .hero-left .areas-publicas a,
+body .hero-section .hero-left .areas-publicas a:visited {
+    color: #d9b86c !important;
+    border: 1px solid #d9b86c !important;
+    background-color: transparent !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 190px !important;
+    height: 48px !important;
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.8px !important;
+}
+
+body .hero-section .hero-left .areas-publicas a:hover {
+    color: #050b0d !important;
+    background-color: #d9b86c !important;
+}
