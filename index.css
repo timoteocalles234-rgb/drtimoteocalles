@@ -1462,30 +1462,90 @@ ul {
         gap: 20px;
     }
 }
-.areas-publicas {
-    position: fixed !important;
-    top: 170px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+/* ÁREAS PÚBLICAS - BOTONES PREMIUM */
+
+.hero-left .areas-publicas {
     display: flex !important;
-    gap: 20px !important;
-    z-index: 99999 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    margin: 24px 0 24px 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    z-index: 10 !important;
 }
 
-.areas-publicas a {
-    display: block !important;
-    padding: 14px 28px !important;
-    border: 2px solid var(--color-gold) !important;
-    color: white !important;
-    background: #050b0d !important;
+.hero-left .areas-publicas a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 150px !important;
+    padding: 13px 22px !important;
+    border: 1px solid #c5a880 !important;
+    background: transparent !important;
+    color: #c5a880 !important;
     text-decoration: none !important;
-    font-size: 14px !important;
-    font-weight: 600 !important;
+    font-family: var(--font-titles) !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.8px !important;
+    transition: all 0.3s ease !important;
 }
 
-.areas-publicas a:hover {
-    background: var(--color-gold) !important;
+.hero-left .areas-publicas a:hover {
+    background: #c5a880 !important;
+    color: #050b0d !important;
+}
+/* ===== ÁREAS PÚBLICAS - DISEÑO FINAL ===== */
+
+.hero-left .areas-publicas {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+
+    width: auto !important;
+    margin: 24px 0 0 0 !important;
+    padding: 0 !important;
+
+    z-index: 10 !important;
+}
+
+.hero-left .areas-publicas a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    min-width: 180px !important;
+    height: 46px !important;
+    padding: 0 22px !important;
+
+    box-sizing: border-box !important;
+
+    border: 1px solid #c5a880 !important;
+    background: transparent !important;
+    color: #c5a880 !important;
+
+    text-decoration: none !important;
+
+    font-family: var(--font-titles) !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.8px !important;
+
+    transition: all 0.3s ease !important;
+}
+
+.hero-left .areas-publicas a:hover {
+    background: #c5a880 !important;
     color: #050b0d !important;
 }

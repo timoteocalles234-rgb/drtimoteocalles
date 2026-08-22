@@ -251,7 +251,7 @@ if (video) {
     });
 }
 
-  async function mostrarLista(tipo) {
+  async function mostrarLista(tipo, area = null) {
 
     const publicaciones =
       JSON.parse(localStorage.getItem("tiempoDeVida")) || [];
@@ -262,7 +262,10 @@ if (video) {
         : "borrador";
 
     const lista =
-      publicaciones.filter(p => p.estado === estado);
+    publicaciones.filter(p =>
+        p.estado === estado &&
+        (!area || p.area === area)
+    );
 
     let contenido = `
       <span class="section-label">
