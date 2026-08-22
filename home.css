@@ -1458,3 +1458,19 @@ html, body {
     background: #c5a880 !important;
     color: #050b0d !important;
 }
+/* ===== CORRECCIÓN FINAL COLOR BOTONES ===== */
+
+.hero-left .areas-publicas a,
+.hero-left .areas-publicas a:visited {
+    color: #d9b86c !important;
+    background: transparent !important;
+    border: 1px solid #d9b86c !important;
+    text-decoration: none !important;
+}
+
+.hero-left .areas-publicas a:hover,
+.hero-left .areas-publicas a:focus {
+    color: #050b0d !important;
+    background: #d9b86c !important;
+    border-color: #d9b86c !important;
+}
