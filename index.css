@@ -1462,3 +1462,30 @@ ul {
         gap: 20px;
     }
 }
+.areas-publicas {
+    position: fixed !important;
+    top: 170px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    display: flex !important;
+    gap: 20px !important;
+    z-index: 99999 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.areas-publicas a {
+    display: block !important;
+    padding: 14px 28px !important;
+    border: 2px solid var(--color-gold) !important;
+    color: white !important;
+    background: #050b0d !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+.areas-publicas a:hover {
+    background: var(--color-gold) !important;
+    color: #050b0d !important;
+}
