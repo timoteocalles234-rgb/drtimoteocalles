@@ -1420,3 +1420,41 @@ html, body {
     bottom: 22px;
     opacity: 0.9;
 }
+/* ===== ÁREAS PÚBLICAS - BOTONES PREMIUM ===== */
+
+.hero-left .areas-publicas {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    position: static !important;
+    width: auto !important;
+    margin: 24px 0 0 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    z-index: 10 !important;
+}
+
+.hero-left .areas-publicas a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 180px !important;
+    height: 46px !important;
+    padding: 0 22px !important;
+    box-sizing: border-box !important;
+    border: 1px solid #c5a880 !important;
+    background: transparent !important;
+    color: #c5a880 !important;
+    text-decoration: none !important;
+    font-family: var(--font-titles) !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.8px !important;
+}
+
+.hero-left .areas-publicas a:hover {
+    background: #c5a880 !important;
+    color: #050b0d !important;
+}
