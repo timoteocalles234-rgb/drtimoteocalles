@@ -1497,3 +1497,21 @@ body .hero-section .hero-left .areas-publicas a:hover {
     color: #050b0d !important;
     background-color: #d9b86c !important;
 }
+.contenido-publico {
+    display: block !important;
+    min-height: 500px !important;
+    padding: 100px 10% !important;
+    background: #080b0c !important;
+    color: white !important;
+}
+
+.contenido-publico-header {
+    display: block !important;
+    visibility: visible !important;
+}
+
+#publicaciones-tiempo-de-vida {
+    display: grid !important;
+    min-height: 200px !important;
+    visibility: visible !important;
+}

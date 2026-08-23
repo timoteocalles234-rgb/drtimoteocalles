@@ -167,3 +167,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+// ============================================
+// TIEMPO DE VIDA - PUBLICACIONES
+// ============================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const contenedor = document.getElementById("publicaciones-tiempo-de-vida");
+
+    if (!contenedor) return;
+
+    const publicaciones =
+        JSON.parse(localStorage.getItem("tiempoDeVida")) || [];
+
+    if (publicaciones.length === 0) {
+        contenedor.innerHTML = "<p>No hay publicaciones todavía.</p>";
+        return;
+    }
+
+    contenedor.innerHTML = publicaciones
+        .filter(p => p.estado === "publicada")
+        .map(p => `
+            <article class="publicacion">
+                <small>${p.categoria || "TIEMPO DE VIDA"}</small>
+                <h3>${p.titulo || ""}</h3>
+                <p>${p.contenido || ""}</p>
+            </article>
+        `)
+        .join("");
+
+});
