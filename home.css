@@ -1497,21 +1497,127 @@ body .hero-section .hero-left .areas-publicas a:hover {
     color: #050b0d !important;
     background-color: #d9b86c !important;
 }
+/* =========================================================
+   TIEMPO DE VIDA - SECCIÓN PÚBLICA
+   ========================================================= */
+
 .contenido-publico {
-    display: block !important;
-    min-height: 500px !important;
-    padding: 100px 10% !important;
-    background: #080b0c !important;
-    color: white !important;
+    width: 100%;
+    min-height: 650px;
+    padding: 110px 8%;
+    background: #080b0c;
+    color: #ffffff;
+    box-sizing: border-box;
 }
 
 .contenido-publico-header {
-    display: block !important;
-    visibility: visible !important;
+    max-width: 900px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.contenido-publico-header > span {
+    display: block;
+    margin-bottom: 18px;
+    color: #d9b86c;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.contenido-publico-header h2 {
+    margin: 0 0 20px;
+    font-size: clamp(36px, 4vw, 58px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: #ffffff;
+}
+
+.contenido-publico-header p {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #aeb5b8;
+    font-size: 17px;
+    line-height: 1.8;
 }
 
 #publicaciones-tiempo-de-vida {
-    display: grid !important;
-    min-height: 200px !important;
-    visibility: visible !important;
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+#publicaciones-tiempo-de-vida > p {
+    grid-column: 1 / -1;
+    margin: 20px auto;
+    color: #777f83;
+    font-size: 16px;
+    text-align: center;
+}
+
+.publicacion {
+    padding: 32px;
+    background: #0d1214;
+    border: 1px solid rgba(217, 184, 108, 0.35);
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.publicacion:hover {
+    transform: translateY(-5px);
+    border-color: #d9b86c;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+}
+
+.publicacion small {
+    display: block;
+    margin-bottom: 15px;
+    color: #d9b86c;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.publicacion h3 {
+    margin: 0 0 16px;
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.publicacion p {
+    margin: 0;
+    color: #b9c0c2;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+@media (max-width: 800px) {
+
+    .contenido-publico {
+        padding: 80px 6%;
+    }
+
+    #publicaciones-tiempo-de-vida {
+        grid-template-columns: 1fr;
+    }
+
+    .contenido-publico-header h2 {
+        font-size: 38px;
+    }
+
+    .contenido-publico-header p {
+        font-size: 15px;
+    }
+
+}
+.contenido-publico[hidden] {
+    display: none !important;
 }

@@ -1,3 +1,4 @@
+console.log("🔥 ESTOY EJECUTANDO EL APP.JS NUEVO");
 /* ==========================================================================
    TIEMPO DE VIDA - INTERACCIONES & CONTROLADOR DE UX (VANILLA JS)
    ========================================================================== */
@@ -154,6 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+
+    if (targetId === '#tiempo-de-vida') {
+        targetElement.hidden = false;
+    }
                 const headerOffset = 90; // header height
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
@@ -171,15 +176,24 @@ document.addEventListener('DOMContentLoaded', () => {
 // TIEMPO DE VIDA - PUBLICACIONES
 // ============================================
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     const contenedor = document.getElementById("publicaciones-tiempo-de-vida");
-
+console.log("CONTENEDOR:", contenedor);
     if (!contenedor) return;
 
-    const publicaciones =
-        JSON.parse(localStorage.getItem("tiempoDeVida")) || [];
+    const respuesta = await fetch(
+    'https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones?select=*',
+    {
+        headers: {
+            'apikey': 'sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4',
+            'Authorization': 'Bearer sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4'
+        }
+    }
+);
 
+const publicaciones = await respuesta.json();
+console.log("RESPUESTA SUPABASE:", publicaciones);
     if (publicaciones.length === 0) {
         contenedor.innerHTML = "<p>No hay publicaciones todavía.</p>";
         return;
