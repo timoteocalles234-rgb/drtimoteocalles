@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. CONTROL DEL SITE HEADER (Cambio de opacidad y tamaño en scroll)
     const header = document.getElementById('site-header');
+if (!header) return;
     
     const handleScrollHeader = () => {
         if (window.scrollY > 50) {
