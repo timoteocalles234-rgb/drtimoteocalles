@@ -1224,278 +1224,255 @@ html, body {
         display: none;
     }
 }
-/* AJUSTE FINAL DEL HERO */
+/* =====================================================
+   HERO — DISEÑO PRINCIPAL LIMPIO
+   ===================================================== */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #05090a;
+}
+
 .hero-container {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
-    z-index: 2;
+    padding: 0 6%;
+    box-sizing: border-box;
 }
 
+/* ---------- MARCA ---------- */
+
+.hero-brand {
+    position: absolute;
+    top: 28px;
+    left: 6%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.hero-brand img {
+    width: 92px;
+    height: 92px;
+    padding: 5px;
+    box-sizing: border-box;
+    object-fit: contain;
+    border: 1px solid #d9b86c;
+    background: #000;
+}
+
+.hero-brand span {
+    color: #d9b86c;
+    font-size: 22px;
+    letter-spacing: 5px;
+    font-weight: 400;
+}
+
+/* ---------- NAVEGACIÓN ---------- */
+
+.hero-nav {
+    position: absolute;
+    top: 32px;
+    right: 6%;
+    z-index: 10;
+    display: flex;
+    gap: 32px;
+}
+
+.hero-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: .5px;
+}
+
+/* ---------- CONTENIDO IZQUIERDO ---------- */
+
 .hero-left {
-    width: 45%;
-    padding-left: 2%;
+    width: 48%;
     position: relative;
-    z-index: 3;
+    z-index: 5;
+    padding-top: 40px;
+}
+
+.hero-eyebrow {
+    color: #fff;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
 }
 
 .hero-left h1 {
     color: #fff;
-    font-size: 60px;
-    line-height: 1.08;
+    font-size: clamp(48px, 4.5vw, 72px);
+    line-height: 1.02;
     font-weight: 300;
-    margin: 20px 0;
+    margin: 0;
+    max-width: 650px;
 }
 
 .hero-subtitle {
     color: #ccc;
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.5;
-    max-width: 520px;
+    max-width: 560px;
+    margin: 28px 0 0;
 }
 
 .hero-highlight {
     color: #d9b86c;
-    font-size: 24px;
+    font-size: 22px;
     font-style: italic;
-    margin: 25px 0;
+    margin: 25px 0 0;
 }
+
+/* ---------- SOLO DOS BOTONES ---------- */
+
+.hero-left .areas-publicas {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 28px;
+    padding: 0;
+}
+
+.hero-left .areas-publicas a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 190px;
+    height: 48px;
+    box-sizing: border-box;
+
+    border: 1px solid #d9b86c;
+    background: transparent;
+    color: #d9b86c;
+
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.8px;
+
+    transition: all .25s ease;
+}
+
+.hero-left .areas-publicas a:hover {
+    background: #d9b86c;
+    color: #05090a;
+}
+
+/* ---------- FOTOGRAFÍA ---------- */
 
 .hero-photo {
     position: absolute;
-    right: 3%;
-    bottom: 0;
+    right: 0;
+    top: 0;
     width: 48%;
-    height: 88%;
+    height: 100%;
     z-index: 2;
 }
 
 .hero-photo img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: bottom center;
+    object-fit: cover;
+    object-position: center;
 }
 
 .hero-signature {
     position: absolute;
-    right: 8%;
+    right: 3%;
     bottom: 25px;
+    z-index: 4;
+
     color: #d9b86c;
-    font-size: 20px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 18px;
     font-style: italic;
 }
 
-.hero-nav {
-    z-index: 5;
-}
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
 
 @media (max-width: 768px) {
+
+    .hero-section {
+        min-height: 100vh;
+    }
+
+    .hero-container {
+        min-height: 100vh;
+        padding: 130px 24px 50px;
+        align-items: flex-start;
+    }
+
+    .hero-brand {
+        top: 20px;
+        left: 24px;
+    }
+
+    .hero-brand img {
+        width: 72px;
+        height: 72px;
+    }
+
+    .hero-brand span {
+        font-size: 17px;
+        letter-spacing: 3px;
+    }
+
+    .hero-nav {
+        display: none;
+    }
+
     .hero-left {
         width: 100%;
-        padding: 20px;
+        z-index: 5;
+        padding-top: 30px;
+    }
+
+    .hero-left h1 {
+        font-size: 44px;
+        max-width: 600px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        max-width: 500px;
+    }
+
+    .hero-highlight {
+        font-size: 20px;
+    }
+
+    .hero-left .areas-publicas {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .hero-left .areas-publicas a {
+        width: 180px;
     }
 
     .hero-photo {
         width: 100%;
-        opacity: 0.35;
-        right: 0;
+        height: 55%;
+        top: auto;
+        bottom: 0;
+        opacity: .25;
     }
 
-    .hero-left h1 {
-        font-size: 42px;
+    .hero-signature {
+        display: none;
     }
-}
-.hero-nav {
-    position: absolute;
-    top: 42px;
-    right: 7%;
-    display: flex;
-    gap: 35px;
-    z-index: 10;
-}
-
-.hero-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-.hero-left {
-    width: 43%;
-    margin-left: 2%;
-}
-
-.hero-left h1 {
-    max-width: 650px;
-    font-size: 58px;
-}
-
-.hero-subtitle {
-    max-width: 500px;
-}
-/* AJUSTE FINAL HERO */
-
-.hero-brand img {
-    width: 85px;
-    height: 85px;
-    object-fit: contain;
-}
-
-.hero-brand span {
-    font-size: 24px;
-    letter-spacing: 5px;
-}
-
-.hero-photo {
-    width: 40%;
-    height: 75%;
-    right: 6%;
-    bottom: 0;
-}
-
-.hero-signature {
-    font-family: "Dancing Script", cursive;
-    font-size: 28px;
-    color: #d9b86c;
-    right: 6%;
-    bottom: 30px;
-}
-
-.hero-left {
-    width: 40%;
-    margin-left: 3%;
-}
-.hero-left {
-    width: 40%;
-    margin-left: 3%;
-    padding-top: 90px;
-}
-
-.hero-brand {
-    top: 30px;
-}
-
-.hero-brand img {
-    width: 75px;
-    height: 75px;
-}
-
-.hero-brand span {
-    font-size: 24px;
-    letter-spacing: 5px;
-}
-/* AJUSTE HERO - FOTO Y FIRMA */
-
-.hero-photo {
-    width: 40%;
-    height: 82%;
-    right: 6%;
-    bottom: auto;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.hero-signature {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 22px;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: 1px;
-    color: #d9b86c;
-    right: 6%;
-    bottom: 35px;
-}
-.hero-signature {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    color: #d9b86c;
-    right: 5%;
-    bottom: 22px;
-    opacity: 0.9;
-}
-/* ===== ÁREAS PÚBLICAS - BOTONES PREMIUM ===== */
-
-.hero-left .areas-publicas {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 14px !important;
-    position: static !important;
-    width: auto !important;
-    margin: 24px 0 0 0 !important;
-    padding: 0 !important;
-    transform: none !important;
-    z-index: 10 !important;
-}
-
-.hero-left .areas-publicas a {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-width: 180px !important;
-    height: 46px !important;
-    padding: 0 22px !important;
-    box-sizing: border-box !important;
-    border: 1px solid #c5a880 !important;
-    background: transparent !important;
-    color: #c5a880 !important;
-    text-decoration: none !important;
-    font-family: var(--font-titles) !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    letter-spacing: 1.8px !important;
-}
-
-.hero-left .areas-publicas a:hover {
-    background: #c5a880 !important;
-    color: #050b0d !important;
-}
-/* ===== CORRECCIÓN FINAL COLOR BOTONES ===== */
-
-.hero-left .areas-publicas a,
-.hero-left .areas-publicas a:visited {
-    color: #d9b86c !important;
-    background: transparent !important;
-    border: 1px solid #d9b86c !important;
-    text-decoration: none !important;
-}
-
-.hero-left .areas-publicas a:hover,
-.hero-left .areas-publicas a:focus {
-    color: #050b0d !important;
-    background: #d9b86c !important;
-    border-color: #d9b86c !important;
-}
-/* BOTONES ÁREAS PÚBLICAS - CORRECCIÓN DEFINITIVA */
-
-body .hero-section .hero-left .areas-publicas a,
-body .hero-section .hero-left .areas-publicas a:visited {
-    color: #d9b86c !important;
-    border: 1px solid #d9b86c !important;
-    background-color: transparent !important;
-    text-decoration: none !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 190px !important;
-    height: 48px !important;
-    box-sizing: border-box !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    letter-spacing: 1.8px !important;
-}
-
-body .hero-section .hero-left .areas-publicas a:hover {
-    color: #050b0d !important;
-    background-color: #d9b86c !important;
 }
 /* =========================================================
    TIEMPO DE VIDA - SECCIÓN PÚBLICA
