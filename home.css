@@ -1883,3 +1883,34 @@ html, body {
         display: none;
     }
 }
+/* =========================================================
+   HERO — FOTO GRANDE, A LA DERECHA
+   ========================================================= */
+
+.hero-photo {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 52vw !important;
+    height: 100vh !important;
+
+    max-width: none !important;
+    margin: 0 !important;
+
+    z-index: 2 !important;
+    opacity: 1 !important;
+}
+
+.hero-photo img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: none !important;
+
+    object-fit: cover !important;
+    object-position: center center !important;
+}
