@@ -1887,6 +1887,10 @@ html, body {
    HERO — FOTO GRANDE, A LA DERECHA
    ========================================================= */
 
+/* =========================================================
+   HERO — FOTO DEFINITIVA
+   ========================================================= */
+
 .hero-photo {
     position: absolute !important;
     top: 0 !important;
@@ -1894,11 +1898,11 @@ html, body {
     left: auto !important;
     bottom: auto !important;
 
-    width: 52vw !important;
+    width: 60vw !important;
     height: 100vh !important;
 
-    max-width: none !important;
     margin: 0 !important;
+    padding: 0 !important;
 
     z-index: 2 !important;
     opacity: 1 !important;
@@ -1906,10 +1910,12 @@ html, body {
 
 .hero-photo img {
     display: block !important;
+
     width: 100% !important;
     height: 100% !important;
 
-    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 
     object-fit: cover !important;
     object-position: center center !important;
