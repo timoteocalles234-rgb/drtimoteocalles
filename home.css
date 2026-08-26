@@ -1296,10 +1296,11 @@ html, body {
 /* ---------- CONTENIDO IZQUIERDO ---------- */
 
 .hero-left {
-    width: 48%;
+    width: 40%;
+    margin-left: 5%;
     position: relative;
     z-index: 5;
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .hero-eyebrow {
@@ -1311,11 +1312,11 @@ html, body {
 
 .hero-left h1 {
     color: #fff;
-    font-size: clamp(48px, 4.5vw, 72px);
-    line-height: 1.02;
+    font-size: clamp(48px, 4vw, 64px);
+    line-height: 1.05;
     font-weight: 300;
     margin: 0;
-    max-width: 650px;
+    max-width: 520px;
 }
 
 .hero-subtitle {
@@ -1434,20 +1435,29 @@ html, body {
     }
 
     .hero-left {
-        width: 100%;
-        z-index: 5;
-        padding-top: 30px;
-    }
+    width: 40%;
+    margin-left: 5%;
+    position: relative;
+    z-index: 5;
+    padding-top: 20px;
+}
 
     .hero-left h1 {
-        font-size: 44px;
-        max-width: 600px;
-    }
+    color: #fff;
+    font-size: clamp(48px, 4vw, 64px);
+    line-height: 1.05;
+    font-weight: 300;
+    margin: 0;
+    max-width: 520px;
+}
 
-    .hero-subtitle {
-        font-size: 16px;
-        max-width: 500px;
-    }
+ .hero-subtitle {
+    color: #ccc;
+    font-size: 17px;
+    line-height: 1.5;
+    max-width: 470px;
+    margin: 28px 0 0;
+}
 
     .hero-highlight {
         font-size: 20px;
@@ -1462,9 +1472,9 @@ html, body {
         width: 180px;
     }
 
-    .hero-photo {
+ .hero-photo {
     position: absolute;
-    width: 50vw !important;
+    width: 47vw !important;
     height: 100vh !important;
     right: 0;
     top: 0;
