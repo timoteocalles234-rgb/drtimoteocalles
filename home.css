@@ -1312,7 +1312,7 @@ html, body {
 
 .hero-left h1 {
     color: #fff;
-    font-size: clamp(48px, 4vw, 64px);
+    font-size: clamp(42px, 3.4vw, 54px);
     line-height: 1.05;
     font-weight: 300;
     margin: 0;
