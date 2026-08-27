@@ -1893,16 +1893,18 @@ html, body {
 
 .hero-photo {
     position: absolute !important;
-    top: 0 !important;
-    right: 0 !important;
+    top: 50% !important;
+    right: -8vw !important;
     left: auto !important;
     bottom: auto !important;
 
-    width: 60vw !important;
-    height: 100vh !important;
+    width: 42vw !important;
+    height: 67vh !important;
 
     margin: 0 !important;
     padding: 0 !important;
+
+    transform: translateY(-50%) !important;
 
     z-index: 2 !important;
     opacity: 1 !important;
