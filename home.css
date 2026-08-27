@@ -1894,11 +1894,11 @@ html, body {
 .hero-photo {
     position: absolute !important;
     top: 50% !important;
-    right: -8vw !important;
+    right: -18vw !important;
     left: auto !important;
     bottom: auto !important;
 
-    width: 42vw !important;
+    width: 34vw !important;
     height: 67vh !important;
 
     margin: 0 !important;
