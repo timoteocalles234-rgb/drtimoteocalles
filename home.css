@@ -2126,12 +2126,12 @@ html, body {
 .hero-photo {
     position: absolute !important;
 
-    top: 8% !important;
-    left: 58% !important;
-    right: 0 !important;
+    top: 5% !important;
+    left: auto !important;
+    right: -20vw !important;
 
-    width: 42% !important;
-    height: 84% !important;
+    width: 44vw !important;
+    height: 90vh !important;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -2144,8 +2144,8 @@ html, body {
 }
 
 .hero-photo img {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100vw !important;
+    height: 100vh !important;
 
     display: block !important;
 
