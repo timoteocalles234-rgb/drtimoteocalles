@@ -2173,7 +2173,7 @@ html, body {
 .hero-photo {
     position: absolute !important;
     top: 0 !important;
-    right: 0 !important;
+    right: -14 !important;
     left: auto !important;
     bottom: auto !important;
 
