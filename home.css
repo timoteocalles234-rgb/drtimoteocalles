@@ -2173,20 +2173,20 @@ html, body {
 .hero-photo {
     position: absolute !important;
     top: 0 !important;
-    right: 2 !important;
+    right: 0 !important;
     left: auto !important;
     bottom: auto !important;
 
-    width: 48% !important;
-    height: 90vh !important;
+    width: 48vw !important;
+    height: 100vh !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
-    transform: none !important;
-
-    z-index: 2 !important;
+    z-index: 3 !important;
     opacity: 1 !important;
+    visibility: visible !important;
+    overflow: hidden !important;
 }
 
 .hero-photo img {
