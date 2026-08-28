@@ -179,13 +179,13 @@ html, body {
 .hero-photo {
     position: absolute !important;
 
-    top: 14% !important;
+    top: 12% !important;
     left: 58% !important;
     right: auto !important;
     bottom: auto !important;
 
     width: 700px !important;
-    height: 85vh !important;
+    height: 95vh !important;
 
     margin: 0 !important;
     padding: 0 !important;
