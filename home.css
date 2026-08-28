@@ -1901,25 +1901,7 @@ html, body {
         height: 100%;
     }
 
-    /* La foto pasa a ser fondo */
-    .hero-photo {
-        position: absolute;
-
-        top: 0;
-        right: 0;
-
-        width: 100%;
-        height: 100%;
-
-        z-index: 1;
-        opacity: 0.28;
-    }
-
-    .hero-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+   
 
     .hero-left {
         position: absolute;
