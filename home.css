@@ -180,12 +180,12 @@ html, body {
     position: absolute !important;
 
     top: 8vh !important;
-    right: 4vw !important;
-    left: auto !important;
-    bottom: auto !important;
+left: 56% !important;
+right: auto !important;
+bottom: auto !important;
 
-    width: 38vw !important;
-    height: 82vh !important;
+width: 40vw !important;
+height: 82vh !important;
 
     margin: 0 !important;
     padding: 0 !important;
