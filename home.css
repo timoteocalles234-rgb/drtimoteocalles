@@ -204,7 +204,7 @@ height: 82vh !important;
     padding: 0 !important;
 
     object-fit: cover !important;
-    object-position: center center !important;
+    object-position: 65% center !important;
 }
 
 /* Firma dentro de la foto */
@@ -261,6 +261,7 @@ height: 82vh !important;
         top: 50%;
         width: 84%;
         max-width: none;
+
         z-index: 10;
     }
 
