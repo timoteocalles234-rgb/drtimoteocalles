@@ -2275,3 +2275,92 @@ html, body {
 
     z-index: 20 !important;
 }
+/* =========================================================
+   HERO FINAL — FOTO GRANDE A LA DERECHA
+   ========================================================= */
+
+.hero-photo {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 52% !important;
+    height: 100vh !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: none !important;
+
+    z-index: 2 !important;
+    opacity: 1 !important;
+}
+
+.hero-photo img {
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: cover !important;
+    object-position: center center !important;
+}
+
+.hero-signature {
+    position: absolute !important;
+    right: 5% !important;
+    bottom: 28px !important;
+
+    z-index: 5 !important;
+
+    color: #d9b86c !important;
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 22px !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+}
+
+/* El texto queda en el lado izquierdo */
+.hero-left {
+    width: 45% !important;
+    margin-left: 5% !important;
+    padding: 0 !important;
+    position: relative !important;
+    z-index: 5 !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero-photo {
+        width: 100% !important;
+        height: 55vh !important;
+        right: 0 !important;
+        top: auto !important;
+        bottom: 0 !important;
+    }
+
+    .hero-photo img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+
+    .hero-left {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 20px 24px !important;
+    }
+
+    .hero-signature {
+        display: none !important;
+    }
+}
