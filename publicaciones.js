@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     cargarPublicaciones("Tiempo de Vida", "publicaciones-tiempo-de-vida");
 
-    crearSeccionSaludRenal();
+  
 
     cargarPublicaciones("Salud Renal", "publicaciones-salud-renal");
 
@@ -147,44 +147,3 @@ function obtenerArchivoIndexedDB(id) {
 }
 
 
-function crearSeccionSaludRenal() {
-
-    if (document.getElementById("salud-renal")) {
-        return;
-    }
-
-    const seccionTiempo =
-        document.getElementById("tiempo-de-vida");
-
-    if (!seccionTiempo) return;
-
-    const seccion =
-        document.createElement("section");
-
-    seccion.className = "contenido-publico";
-    seccion.id = "salud-renal";
-
-    seccion.innerHTML = `
-        <div class="contenido-publico-header">
-
-            <span>SALUD RENAL</span>
-
-            <h2>Autonomía. Prevención. Salud.</h2>
-
-            <p>
-                Un espacio para comprender la salud renal,
-                prevenir y tomar mejores decisiones.
-            </p>
-
-        </div>
-
-        <div
-            id="publicaciones-salud-renal"
-            class="publicaciones-grid"
-        >
-            <p>No hay publicaciones todavía.</p>
-        </div>
-    `;
-
-    seccionTiempo.after(seccion);
-}
