@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+if (!document.querySelector(".admin-container")) return;
   const botones = document.querySelectorAll(".action-card");
   const botonCrear = document.querySelector(".primary-button");
   const centro = document.querySelector(".welcome-card");
