@@ -174,41 +174,55 @@ if (!header) return;
 
 });
 // ============================================
-// TIEMPO DE VIDA - PUBLICACIONES
+// PUBLICACIONES - TIEMPO DE VIDA + SALUD RENAL
 // ============================================
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const contenedor = document.getElementById("publicaciones-tiempo-de-vida");
-console.log("CONTENEDOR:", contenedor);
-    if (!contenedor) return;
+    async function cargarPublicaciones(area, contenedorId) {
 
-    const respuesta = await fetch(
-    'https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones?select=*',
-    {
-        headers: {
-            'apikey': 'sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4',
-            'Authorization': 'Bearer sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4'
+        const contenedor = document.getElementById(contenedorId);
+
+        if (!contenedor) return;
+
+        const respuesta = await fetch(
+            "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones?select=*",
+            {
+                headers: {
+                    "apikey": "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
+                    "Authorization": "Bearer sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4"
+                }
+            }
+        );
+
+        const publicaciones = await respuesta.json();
+
+        const lista = publicaciones.filter(
+            p => p.estado === "publicada" && p.area === area
+        );
+
+        if (lista.length === 0) {
+            contenedor.innerHTML = "<p>No hay publicaciones todavía.</p>";
+            return;
         }
-    }
-);
 
-const publicaciones = await respuesta.json();
-console.log("RESPUESTA SUPABASE:", publicaciones);
-    if (publicaciones.length === 0) {
-        contenedor.innerHTML = "<p>No hay publicaciones todavía.</p>";
-        return;
-    }
-
-    contenedor.innerHTML = publicaciones
-        .filter(p => p.estado === "publicada")
-        .map(p => `
+        contenedor.innerHTML = lista.map(p => `
             <article class="publicacion">
-                <small>${p.categoria || "TIEMPO DE VIDA"}</small>
+                <small>${p.categoria || area}</small>
                 <h3>${p.titulo || ""}</h3>
                 <p>${p.contenido || ""}</p>
             </article>
-        `)
-        .join("");
+        `).join("");
+    }
+
+    cargarPublicaciones(
+        "Tiempo de Vida",
+        "publicaciones-tiempo-de-vida"
+    );
+
+    cargarPublicaciones(
+        "Salud Renal",
+        "publicaciones-salud-renal"
+    );
 
 });
