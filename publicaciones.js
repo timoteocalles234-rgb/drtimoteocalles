@@ -19,11 +19,12 @@ async function cargarPublicaciones(area, contenedorId) {
         JSON.parse(localStorage.getItem("tiempoDeVida")) || [];
 
     const lista = publicaciones
-        .filter(p =>
-            p.estado === "publicada" &&
-            p.area === area
-        )
-        .reverse();
+    .filter(p =>
+        p.estado === "publicada" &&
+        String(p.area || "").trim().toLowerCase() ===
+        String(area || "").trim().toLowerCase()
+    )
+    .reverse();
 
     contenedor.innerHTML = "";
 
