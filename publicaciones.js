@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    cargarPublicaciones("Tiempo de Vida", "publicaciones-tiempo-de-vida");
-    cargarPublicaciones("Salud Renal", "publicaciones-salud-renal");
+   // cargarPublicaciones("Tiempo de Vida", "publicaciones-tiempo-de-vida");
+// cargarPublicaciones("Salud Renal", "publicaciones-salud-renal");
 });
 
 async function cargarPublicaciones(area, contenedorId) {
