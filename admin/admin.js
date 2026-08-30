@@ -169,61 +169,7 @@ function guardarArchivoIndexedDB(id, archivo) {
         };
     });
 }
-  async function guardarPublicacion(estado) {
-
-    const titulo = document.getElementById("titulo").value.trim();
-    const contenido = document.getElementById("contenido").value.trim();
-    const area = document.getElementById("area").value;
-    const categoria = document.getElementById("categoria").value;
-    const imagen = document.getElementById("imagen").files[0];
-const video = document.getElementById("video").files[0];
-
-    if (!titulo || !contenido) {
-      alert("Completá el título y el contenido.");
-      return;
-    }
-
-    const publicaciones =
-      JSON.parse(localStorage.getItem("tiempoDeVida")) || [];
-
-    
-    const imagenId = imagen ? `imagen-${Date.now()}` : "";
-const videoId = video ? `video-${Date.now()}` : "";
-      publicaciones.push({
-      id: Date.now(),
-      titulo: titulo,
-      contenido: contenido,
-      categoria: categoria,
-imagen: imagenId,
-area: area,
-video: videoId,
-      estado: estado,
-      fecha: new Date().toLocaleString("es-AR")
-    });
-
-    localStorage.setItem(
-      "tiempoDeVida",
-      JSON.stringify(publicaciones)
-    );
-if (imagen) {
-    await guardarArchivoIndexedDB(imagenId, imagen);
-}
-
-if (video) {
-    await guardarArchivoIndexedDB(videoId, video);
-}
-    alert(
-      estado === "publicada"
-        ? "Publicación realizada correctamente."
-        : "Borrador guardado correctamente."
-    );
-
-    mostrarLista(
-      estado === "publicada"
-        ? "publicadas"
-        : "borradores"
-    );
-  }
+  
 
   function obtenerArchivoIndexedDB(id) {
     return new Promise((resolve, reject) => {
