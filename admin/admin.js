@@ -169,7 +169,68 @@ function guardarArchivoIndexedDB(id, archivo) {
         };
     });
 }
-  
+  async function guardarPublicacion(estado) {
+
+    const titulo = document.getElementById("titulo").value.trim();
+    const contenido = document.getElementById("contenido").value.trim();
+    const area = document.getElementById("area").value;
+    const categoria = document.getElementById("categoria").value;
+
+    if (!titulo || !contenido) {
+        alert("Completá el título y el contenido.");
+        return;
+    }
+
+    try {
+
+        const respuesta = await fetch(
+            "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones",
+            {
+                method: "POST",
+                headers: {
+                    "apikey": "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
+                    "Authorization": "Bearer sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
+                    "Content-Type": "application/json",
+                    "Prefer": "return=minimal"
+                },
+                body: JSON.stringify({
+                    titulo: titulo,
+                    contenido: contenido,
+                    area: area,
+                    categoria: categoria,
+                    estado: estado,
+                    fecha: new Date().toISOString(),
+                    imagen: "",
+                    video: ""
+                })
+            }
+        );
+
+        if (!respuesta.ok) {
+            const error = await respuesta.text();
+            console.error("ERROR SUPABASE:", error);
+            alert("ERROR SUPABASE:\n" + error);
+            return;
+        }
+
+        alert(
+            estado === "publicada"
+                ? "PUBLICACIÓN REALIZADA CORRECTAMENTE."
+                : "BORRADOR GUARDADO CORRECTAMENTE."
+        );
+
+        mostrarLista(
+            estado === "publicada"
+                ? "publicadas"
+                : "borradores"
+        );
+
+    } catch (error) {
+
+        console.error("ERROR:", error);
+        alert("ERROR DE CONEXIÓN CON SUPABASE.");
+    }
+}
 
   function obtenerArchivoIndexedDB(id) {
     return new Promise((resolve, reject) => {
