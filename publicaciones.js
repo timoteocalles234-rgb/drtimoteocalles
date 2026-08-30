@@ -15,7 +15,7 @@ async function cargarPublicaciones(area, contenedorId) {
             "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones?select=*",
             {
                 headers: {
-                    "apikey": "sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4",
+                    "apikey": "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
                     
                 }
             }
