@@ -34,25 +34,10 @@ async function cargarPublicaciones(area, contenedorId) {
 
         console.log("PUBLICACIONES PARA MOSTRAR:", lista);
 
-        if (lista.length === 0) {
-            contenedor.innerHTML = "<p>No hay publicaciones todavía.</p>";
-            return;
-        }
-
-        contenedor.innerHTML = lista
-            .reverse()
-            .map(p => `
-                <article class="publicacion">
-
-                    <small>${p.categoria || area}</small>
-
-                    <h3>${p.titulo || ""}</h3>
-
-                    <p>${p.contenido || ""}</p>
-
-                </article>
-            `)
-            .join("");
+       contenedor.innerHTML = `
+    <h2>PUBLICACIONES RECIBIDAS</h2>
+    <pre>${JSON.stringify(lista, null, 2)}</pre>
+`;
 
     } catch (error) {
 
