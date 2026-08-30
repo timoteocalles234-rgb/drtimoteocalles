@@ -16,7 +16,7 @@ async function cargarPublicaciones(area, contenedorId) {
             {
                 headers: {
                     "apikey": "sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4",
-                    "Authorization": "Bearer sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4"
+                    
                 }
             }
         );
