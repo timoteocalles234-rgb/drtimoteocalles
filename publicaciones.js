@@ -1,11 +1,7 @@
-document.addEventListener("DOMContentLoaded", async () => {
-
+document.addEventListener("DOMContentLoaded", () => {
     cargarPublicaciones("Tiempo de Vida", "publicaciones-tiempo-de-vida");
-
     cargarPublicaciones("Salud Renal", "publicaciones-salud-renal");
-
 });
-
 
 async function cargarPublicaciones(area, contenedorId) {
 
@@ -16,9 +12,7 @@ async function cargarPublicaciones(area, contenedorId) {
     try {
 
         const respuesta = await fetch(
-            "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones?select=*&estado=eq.publicada&area=eq." +
-            encodeURIComponent(area) +
-            "&order=fecha.desc",
+            "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones?select=*",
             {
                 headers: {
                     "apikey": "sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4",
@@ -33,24 +27,35 @@ async function cargarPublicaciones(area, contenedorId) {
 
         const publicaciones = await respuesta.json();
 
-        console.log("PUBLICACIONES", area, publicaciones);
+        console.log("PUBLICACIONES RECIBIDAS:", publicaciones);
+        console.log("ÁREA BUSCADA:", area);
 
-        if (!publicaciones.length) {
+        const lista = publicaciones.filter(p =>
+            p.estado === "publicada" &&
+            p.area === area
+        );
+
+        console.log("PUBLICACIONES PARA MOSTRAR:", lista);
+
+        if (lista.length === 0) {
             contenedor.innerHTML = "<p>No hay publicaciones todavía.</p>";
             return;
         }
 
-        contenedor.innerHTML = publicaciones.map(p => `
-            <article class="publicacion">
+        contenedor.innerHTML = lista
+            .reverse()
+            .map(p => `
+                <article class="publicacion">
 
-                <small>${p.categoria || area}</small>
+                    <small>${p.categoria || area}</small>
 
-                <h3>${p.titulo || ""}</h3>
+                    <h3>${p.titulo || ""}</h3>
 
-                <p>${p.contenido || ""}</p>
+                    <p>${p.contenido || ""}</p>
 
-            </article>
-        `).join("");
+                </article>
+            `)
+            .join("");
 
     } catch (error) {
 
@@ -60,5 +65,3 @@ async function cargarPublicaciones(area, contenedorId) {
             "<p>No se pudieron cargar las publicaciones.</p>";
     }
 }
-
-
