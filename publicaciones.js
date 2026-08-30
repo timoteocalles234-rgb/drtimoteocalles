@@ -30,9 +30,7 @@ async function cargarPublicaciones(area, contenedorId) {
         console.log("PUBLICACIONES RECIBIDAS:", publicaciones);
         console.log("ÁREA BUSCADA:", area);
 
-        const lista = publicaciones.filter(p =>
-    p.estado === "publicada"
-);
+        const lista = publicaciones;
 
         console.log("PUBLICACIONES PARA MOSTRAR:", lista);
 
