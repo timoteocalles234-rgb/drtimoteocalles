@@ -34,7 +34,7 @@ const lista = publicaciones.filter(p => {
     console.log("CATEGORIA BD:", JSON.stringify(p.categoria));
     console.log("AREA:", JSON.stringify(area));
 
-    return p.categoria?.trim().toLowerCase() === area?.trim().toLowerCase();
+    return p.area?.trim().toLowerCase() === area?.trim().toLowerCase();
 });
 
 
