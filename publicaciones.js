@@ -49,13 +49,14 @@ contenedor.innerHTML = lista
     .slice()
     .reverse()
     .map(p => `
-        <article class="publication">
+        <article class="publicacion">
             <small>${p.categoria || area}</small>
             <h3>${p.titulo || ""}</h3>
             <p>${p.contenido || ""}</p>
         </article>
     `)
     .join("");
+
 
     } catch (error) {
 
