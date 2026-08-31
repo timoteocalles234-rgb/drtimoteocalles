@@ -188,8 +188,8 @@ function guardarArchivoIndexedDB(id, archivo) {
     {
         method: "POST",
         headers: {
-            "apikey": "sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4",
-            "Authorization": "Bearer sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4",
+            "apikey": "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
+            "Authorization": "Bearer sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
             "Content-Type": "application/json",
             "Prefer": "return=minimal"
         },
