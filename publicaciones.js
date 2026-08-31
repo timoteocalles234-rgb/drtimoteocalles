@@ -38,7 +38,7 @@ const lista = publicaciones.filter(p => {
     p.area?.trim().toLowerCase() === area?.trim().toLowerCase() ||
     p.categoria?.trim().toLowerCase() === area?.trim().toLowerCase()
 );
-
+});
 
         console.log("PUBLICACIONES PARA MOSTRAR:", lista);
 
@@ -50,14 +50,14 @@ const lista = publicaciones.filter(p => {
 contenedor.innerHTML = lista
     .slice()
     .reverse()
-    .map(p => `
-        <article class="publicacion">
-            <small>${p.categoria || area}</small>
-            <h3>${p.titulo || ""}</h3>
-            <p>${p.contenido || ""}</p>
-        </article>
-    `)
-    .join("");
+    .map(p =>
+    `<article class="publicacion">
+        <small>${p.categoria || area}</small>
+        <h3>${p.titulo || ""}</h3>
+        <p>${p.contenido || ""}</p>
+    </article>`
+)
+.join("");
 
 
     } catch (error) {
