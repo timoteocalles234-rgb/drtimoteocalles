@@ -205,7 +205,7 @@ function guardarArchivoIndexedDB(id, archivo) {
         })
     }
 );
-
+console.log("POST PUBLICACION STATUS:", respuesta.status);
         if (!respuesta.ok) {
             const error = await respuesta.text();
             console.error("ERROR SUPABASE:", error);
