@@ -199,7 +199,7 @@ function guardarArchivoIndexedDB(id, archivo) {
             area: area,
             categoria: categoria,
             estado: estado,
-            fecha: new Date().toISOString(),
+          
             imagen: "",
             video: ""
         })
