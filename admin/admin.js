@@ -184,27 +184,27 @@ function guardarArchivoIndexedDB(id, archivo) {
     try {
 
         const respuesta = await fetch(
-            "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones",
-            {
-                method: "POST",
-                headers: {
-                    "apikey": "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
-                    "Authorization": "Bearer sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
-                    "Content-Type": "application/json",
-                    "Prefer": "return=minimal"
-                },
-                body: JSON.stringify({
-                    titulo: titulo,
-                    contenido: contenido,
-                    area: area,
-                    categoria: categoria,
-                    estado: estado,
-                    fecha: new Date().toISOString(),
-                    imagen: "",
-                    video: ""
-                })
-            }
-        );
+    "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones",
+    {
+        method: "POST",
+        headers: {
+            "apikey": "sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4",
+            "Authorization": "Bearer sb_publishable_NeRm90B6S_HD-ooxgDnxHw_zphN9aF4",
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({
+            titulo: titulo,
+            contenido: contenido,
+            area: area,
+            categoria: categoria,
+            estado: estado,
+            fecha: new Date().toISOString(),
+            imagen: "",
+            video: ""
+        })
+    }
+);
 
         if (!respuesta.ok) {
             const error = await respuesta.text();
