@@ -1,3 +1,10 @@
+if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+}
+
+window.addEventListener("load", () => {
+    window.scrollTo(0, 0);
+});
 console.log("🔥 ESTOY EJECUTANDO EL APP.JS NUEVO");
 /* ==========================================================================
    TIEMPO DE VIDA - INTERACCIONES & CONTROLADOR DE UX (VANILLA JS)
