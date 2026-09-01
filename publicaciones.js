@@ -43,16 +43,26 @@ async function cargarPublicaciones(area, contenedorId) {
         }
 
         contenedor.innerHTML = lista
-            .slice()
-            .reverse()
-            .map(p =>
-                '<article class="publicacion">' +
-                '<small>' + (p.categoria || area) + '</small>' +
-                '<h3>' + (p.titulo || "") + '</h3>' +
-                '<p>' + (p.contenido || "") + '</p>' +
-                '</article>'
-            )
-            .join("");
+    .slice()
+    .reverse()
+    .map(p =>
+        '<article class="publicacion" style="cursor:pointer;" data-id="' + p.id + '">' +
+
+        (p.imagen
+            ? '<img src="' + p.imagen + '" alt="' +
+              (p.titulo || "Imagen de la publicación") +
+              '" style="width:100%; max-height:420px; object-fit:cover; margin-bottom:24px;">'
+            : '') +
+
+        '<small>' + (p.categoria || area) + '</small>' +
+
+        '<h3>' + (p.titulo || "") + '</h3>' +
+
+        '<p>' + (p.contenido || "") + '</p>' +
+
+        '</article>'
+    )
+    .join("");
     } catch (error) {
         console.error("ERROR CARGANDO PUBLICACIONES:", error);
         contenedor.innerHTML =
