@@ -181,35 +181,108 @@ function guardarArchivoIndexedDB(id, archivo) {
         return;
     }
 
+    const SUPABASE_URL = "https://rfpufrojyobydeahqtrb.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4";
+
     try {
 
+        let imagenURL = "";
+
+        // ==========================================
+        // SUBIR IMAGEN A SUPABASE STORAGE
+        // ==========================================
+
+        const archivoInput = document.getElementById("imagen");
+        const archivo = archivoInput?.files?.[0];
+
+        if (archivo) {
+
+            const nombreArchivo =
+                Date.now() + "-" +
+                archivo.name.replace(/[^a-zA-Z0-9._-]/g, "-");
+
+            const respuestaImagen = await fetch(
+                `${SUPABASE_URL}/storage/v1/object/publicaciones/${nombreArchivo}`,
+                {
+                    method: "POST",
+                    headers: {
+                        "apikey": SUPABASE_KEY,
+                        "Authorization": `Bearer ${SUPABASE_KEY}`,
+                        "Content-Type": archivo.type || "application/octet-stream"
+                    },
+                    body: archivo
+                }
+            );
+
+            if (!respuestaImagen.ok) {
+                const errorImagen = await respuestaImagen.text();
+
+                console.error(
+                    "ERROR SUBIENDO IMAGEN:",
+                    errorImagen
+                );
+
+                alert(
+                    "ERROR AL SUBIR LA IMAGEN:\n" +
+                    errorImagen
+                );
+
+                return;
+            }
+
+            imagenURL =
+                `${SUPABASE_URL}/storage/v1/object/publicaciones/${nombreArchivo}`;
+
+            console.log("IMAGEN SUBIDA:", imagenURL);
+        }
+
+        // ==========================================
+        // GUARDAR PUBLICACIÓN
+        // ==========================================
+
         const respuesta = await fetch(
-    "https://rfpufrojyobydeahqtrb.supabase.co/rest/v1/publicaciones",
-    {
-        method: "POST",
-        headers: {
-            "apikey": "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
-            "Authorization": "Bearer sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4",
-            "Content-Type": "application/json",
-            "Prefer": "return=minimal"
-        },
-        body: JSON.stringify({
-            titulo: titulo,
-            contenido: contenido,
-            area: area,
-            categoria: categoria,
-            estado: estado,
-          
-            imagen: "",
-            video: ""
-        })
-    }
-);
-console.log("POST PUBLICACION STATUS:", respuesta.status);
+            `${SUPABASE_URL}/rest/v1/publicaciones`,
+            {
+                method: "POST",
+
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": `Bearer ${SUPABASE_KEY}`,
+                    "Content-Type": "application/json",
+                    "Prefer": "return=minimal"
+                },
+
+                body: JSON.stringify({
+                    titulo: titulo,
+                    contenido: contenido,
+                    area: area,
+                    categoria: categoria,
+                    estado: estado,
+                    imagen: imagenURL,
+                    video: ""
+                })
+            }
+        );
+
+        console.log(
+            "POST PUBLICACION STATUS:",
+            respuesta.status
+        );
+
         if (!respuesta.ok) {
+
             const error = await respuesta.text();
-            console.error("ERROR SUPABASE:", error);
-            alert("ERROR SUPABASE:\n" + error);
+
+            console.error(
+                "ERROR SUPABASE:",
+                error
+            );
+
+            alert(
+                "ERROR SUPABASE:\n" +
+                error
+            );
+
             return;
         }
 
@@ -227,8 +300,14 @@ console.log("POST PUBLICACION STATUS:", respuesta.status);
 
     } catch (error) {
 
-        console.error("ERROR:", error);
-        alert("ERROR DE CONEXIÓN CON SUPABASE.");
+        console.error(
+            "ERROR:",
+            error
+        );
+
+        alert(
+            "ERROR DE CONEXIÓN CON SUPABASE."
+        );
     }
 }
 
