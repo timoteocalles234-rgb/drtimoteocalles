@@ -63,110 +63,119 @@ async function cargarPublicaciones(area, contenedorId) {
         '</article>'
     )
     .join("");
-    contenedor.querySelectorAll(".publicacion").forEach(card => {
+   contenedor.querySelectorAll(".publicacion").forEach((card) => {
 
-    card.addEventListener("click", () => {
+    card.addEventListener("click", function () {
 
-        const id = card.dataset.id;
+        const id = this.dataset.id;
+
+        console.log("CLICK PUBLICACIÓN:", id);
+        console.log("PUBLICACIONES:", publicaciones);
 
         const publicacion = publicaciones.find(
-            p => String(p.id) === String(id)
+            (p) => String(p.id) === String(id)
         );
 
-        if (!publicacion) return;
+        if (!publicacion) {
+            alert("No se encontró esta publicación.");
+            return;
+        }
 
         const modal = document.createElement("div");
 
-        modal.style.position = "fixed";
-        modal.style.inset = "0";
-        modal.style.background = "rgba(0,0,0,0.88)";
-        modal.style.zIndex = "99999";
-        modal.style.display = "flex";
-        modal.style.alignItems = "center";
-        modal.style.justifyContent = "center";
-        modal.style.padding = "30px";
-        modal.style.overflowY = "auto";
+        modal.style.cssText = `
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            overflow-y: auto;
+        `;
 
         modal.innerHTML = `
             <div style="
+                position:relative;
                 width:100%;
                 max-width:900px;
+                max-height:90vh;
+                overflow-y:auto;
                 background:#0d1214;
-                border:1px solid rgba(217,184,108,.45);
+                border:1px solid #d9b86c;
                 padding:40px;
-                position:relative;
                 box-sizing:border-box;
             ">
 
                 <button id="cerrar-publicacion" style="
                     position:absolute;
-                    top:15px;
-                    right:18px;
+                    top:10px;
+                    right:15px;
                     background:none;
                     border:none;
-                    color:#fff;
-                    font-size:30px;
+                    color:white;
+                    font-size:32px;
                     cursor:pointer;
                 ">×</button>
 
                 ${
                     publicacion.imagen
-                    ? `
-                        <img
-                            src="${publicacion.imagen}"
-                            alt="${publicacion.titulo || "Publicación"}"
-                            style="
-                                width:100%;
-                                max-height:520px;
-                                object-fit:cover;
-                                margin-bottom:30px;
-                            "
-                        >
-                    `
-                    : ""
+                        ? `
+                            <img
+                                src="${publicacion.imagen}"
+                                alt="${publicacion.titulo || ""}"
+                                style="
+                                    width:100%;
+                                    max-height:500px;
+                                    object-fit:cover;
+                                    margin-bottom:30px;
+                                    display:block;
+                                "
+                            >
+                        `
+                        : ""
                 }
 
                 <small style="
                     color:#d9b86c;
                     text-transform:uppercase;
                     letter-spacing:2px;
-                    font-size:11px;
                 ">
                     ${publicacion.categoria || area}
                 </small>
 
                 <h2 style="
-                    color:#fff;
-                    font-size:38px;
+                    color:white;
+                    font-size:40px;
                     font-weight:400;
-                    margin:15px 0 25px;
                     line-height:1.2;
+                    margin:15px 0 25px;
                 ">
                     ${publicacion.titulo || ""}
                 </h2>
 
-                <div style="
+                <p style="
                     color:#c8ced0;
                     font-size:18px;
                     line-height:1.9;
                     white-space:pre-wrap;
                 ">
                     ${publicacion.contenido || ""}
-                </div>
+                </p>
 
             </div>
         `;
 
         document.body.appendChild(modal);
 
-        document
-            .getElementById("cerrar-publicacion")
+        modal.querySelector("#cerrar-publicacion")
             .addEventListener("click", () => {
                 modal.remove();
             });
 
-        modal.addEventListener("click", event => {
-            if (event.target === modal) {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
                 modal.remove();
             }
         });
