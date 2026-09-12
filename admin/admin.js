@@ -1,5 +1,201 @@
-document.addEventListener("DOMContentLoaded", () => {
-if (!document.querySelector(".admin-container")) return;
+const SUPABASE_URL = "https://rfpufrojyobydeahqtrb.supabase.co";
+const SUPABASE_KEY = "sb_publishable_NeRm9OB6S_HD-ooxgDnxHw_zphN9aF4";
+
+let supabaseClient = null;
+let accessToken = null;
+
+async function iniciarAutenticacion() {
+
+    const modulo = await import(
+        "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm"
+    );
+
+    supabaseClient = modulo.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+    const panel = document.querySelector(".admin-container");
+
+    if (!panel) return false;
+
+    panel.style.display = "none";
+
+    const { data: { session } } =
+        await supabaseClient.auth.getSession();
+
+    if (session) {
+
+        accessToken = session.access_token;
+        panel.style.display = "";
+
+        return true;
+    }
+
+    const login = document.createElement("div");
+
+    login.id = "login-admin";
+
+    login.innerHTML = `
+        <div style="
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#05090a;
+            padding:30px;
+            box-sizing:border-box;
+        ">
+
+            <form id="form-login-admin" style="
+                width:100%;
+                max-width:420px;
+                background:#0d1214;
+                padding:40px;
+                border:1px solid rgba(217,184,108,.4);
+                box-sizing:border-box;
+            ">
+
+                <div style="
+                    color:#d9b86c;
+                    font-size:12px;
+                    letter-spacing:3px;
+                    text-transform:uppercase;
+                    margin-bottom:15px;
+                ">
+                    TIEMPO DE VIDA
+                </div>
+
+                <h1 style="
+                    color:white;
+                    font-weight:400;
+                    margin:0 0 10px;
+                ">
+                    Acceso de administrador
+                </h1>
+
+                <p style="
+                    color:#aeb5b8;
+                    margin-bottom:30px;
+                ">
+                    Ingresá para administrar las publicaciones.
+                </p>
+
+                <label style="color:white;display:block;margin-bottom:8px;">
+                    Email
+                </label>
+
+                <input
+                    id="login-email"
+                    type="email"
+                    value="timoteo@tiempodevida.ar"
+                    autocomplete="username"
+                    required
+                    style="
+                        width:100%;
+                        padding:13px;
+                        margin-bottom:18px;
+                        box-sizing:border-box;
+                    "
+                >
+
+                <label style="color:white;display:block;margin-bottom:8px;">
+                    Contraseña
+                </label>
+
+                <input
+                    id="login-password"
+                    type="password"
+                    autocomplete="current-password"
+                    required
+                    style="
+                        width:100%;
+                        padding:13px;
+                        margin-bottom:20px;
+                        box-sizing:border-box;
+                    "
+                >
+
+                <button
+                    type="submit"
+                    style="
+                        width:100%;
+                        padding:14px;
+                        background:#d9b86c;
+                        border:0;
+                        cursor:pointer;
+                        font-weight:600;
+                    "
+                >
+                    INGRESAR
+                </button>
+
+                <p
+                    id="login-error"
+                    style="
+                        color:#e88;
+                        margin-top:15px;
+                        display:none;
+                    "
+                ></p>
+
+            </form>
+        </div>
+    `;
+
+    document.body.insertBefore(login, document.body.firstChild);
+
+    const formulario =
+        document.getElementById("form-login-admin");
+
+    formulario.addEventListener("submit", async (evento) => {
+
+        evento.preventDefault();
+
+        const email =
+            document.getElementById("login-email").value.trim();
+
+        const password =
+            document.getElementById("login-password").value;
+
+        const error =
+            document.getElementById("login-error");
+
+        error.style.display = "none";
+
+        const { data, error: loginError } =
+            await supabaseClient.auth.signInWithPassword({
+                email,
+                password
+            });
+
+        if (loginError) {
+
+            error.textContent =
+                "Email o contraseña incorrectos.";
+
+            error.style.display = "block";
+
+            return;
+        }
+
+        accessToken = data.session.access_token;
+
+        login.remove();
+
+        panel.style.display = "";
+    });
+
+    return false;
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+    if (!document.querySelector(".admin-container")) return;
+
+    const autenticado = await iniciarAutenticacion();
+
+    if (!autenticado) return;
   const botones = document.querySelectorAll(".action-card");
   const botonCrear = document.querySelector(".primary-button");
   const centro = document.querySelector(".welcome-card");
