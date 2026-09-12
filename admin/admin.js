@@ -403,7 +403,7 @@ function guardarArchivoIndexedDB(id, archivo) {
                     method: "POST",
                     headers: {
                         "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${SUPABASE_KEY}`,
+                        "Authorization": `Bearer ${accessToken}`,
                         "Content-Type": archivo.type || "application/octet-stream"
                     },
                     body: archivo
