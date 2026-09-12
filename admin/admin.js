@@ -592,7 +592,21 @@ function guardarArchivoIndexedDB(id, archivo) {
             <div id="media-${p.id}"></div>
 
             <small>${p.fecha}</small>
-
+<button
+  class="delete-publication"
+  data-id="${p.id}"
+  data-imagen="${p.imagen || ""}"
+  style="
+    margin-top:15px;
+    padding:10px 16px;
+    background:#8b2e2e;
+    color:white;
+    border:0;
+    cursor:pointer;
+  "
+>
+  ELIMINAR
+</button>
           </article>
         `;
       });
@@ -605,6 +619,20 @@ function guardarArchivoIndexedDB(id, archivo) {
     }
 
     centro.innerHTML = contenido;
+    document.querySelectorAll(".delete-publication").forEach(boton => {
+  boton.addEventListener("click", async () => {
+
+    const id = boton.dataset.id;
+
+    const confirmar = confirm(
+      "¿Estás seguro de que querés eliminar esta publicación?"
+    );
+
+    if (!confirmar) return;
+
+    await eliminarPublicacion(id, boton.dataset.imagen);
+  });
+});
     for (const p of lista) {
     const media = document.getElementById(`media-${p.id}`);
 
@@ -642,3 +670,84 @@ function guardarArchivoIndexedDB(id, archivo) {
   }
 
 });
+async function eliminarPublicacion(id, imagenURL) {
+
+  try {
+
+    // Eliminar imagen de Storage si existe
+    if (imagenURL) {
+
+      const partes = imagenURL.split("/publicaciones/");
+      const nombreArchivo = partes[1];
+
+      if (nombreArchivo) {
+
+        const respuestaImagen = await fetch(
+          `${SUPABASE_URL}/storage/v1/object/publicaciones/${nombreArchivo}`,
+          {
+            method: "DELETE",
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization": `Bearer ${accessToken}`
+            }
+          }
+        );
+
+        if (!respuestaImagen.ok) {
+
+          const errorImagen = await respuestaImagen.text();
+
+          console.error(
+            "ERROR ELIMINANDO IMAGEN:",
+            errorImagen
+          );
+
+          alert(
+            "No se pudo eliminar la imagen. La publicación no fue eliminada."
+          );
+
+          return;
+        }
+      }
+    }
+
+    // Eliminar publicación de la base de datos
+    const respuesta = await fetch(
+      `${SUPABASE_URL}/rest/v1/publicaciones?id=eq.${encodeURIComponent(id)}`,
+      {
+        method: "DELETE",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${accessToken}`
+        }
+      }
+    );
+
+    if (!respuesta.ok) {
+
+      const error = await respuesta.text();
+
+      console.error(
+        "ERROR ELIMINANDO PUBLICACIÓN:",
+        error
+      );
+
+      alert("No se pudo eliminar la publicación.");
+
+      return;
+    }
+
+    alert("PUBLICACIÓN ELIMINADA CORRECTAMENTE.");
+
+    location.reload();
+
+  } catch (error) {
+
+    console.error(
+      "ERROR:",
+      error
+    );
+
+    alert("Error de conexión con Supabase.");
+  }
+}
