@@ -443,7 +443,7 @@ function guardarArchivoIndexedDB(id, archivo) {
 
                 headers: {
                     "apikey": SUPABASE_KEY,
-                    "Authorization": `Bearer ${SUPABASE_KEY}`,
+                    "Authorization": `Bearer ${accessToken}`,
                     "Content-Type": "application/json",
                     "Prefer": "return=minimal"
                 },
